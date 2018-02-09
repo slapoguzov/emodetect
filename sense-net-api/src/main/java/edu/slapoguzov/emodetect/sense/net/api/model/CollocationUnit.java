@@ -2,17 +2,12 @@ package edu.slapoguzov.emodetect.sense.net.api.model;
 
 import java.util.List;
 
-public abstract class CollocationUnit implements Sensitive {
+public abstract class CollocationUnit extends Sensitive {
     private List<Word> words;
     private List<CollocationUnit> relations;
 
-    private Double valence;
     private Long numberPositiveSenses;
     private Long numberNegativeSenses;
-
-    public Double getValence() {
-        return valence;
-    }
 
     public List<Word> getWords() {
         return words;
@@ -28,10 +23,6 @@ public abstract class CollocationUnit implements Sensitive {
 
     public void setRelations(List<CollocationUnit> relations) {
         this.relations = relations;
-    }
-
-    public void setValence(Double valence) {
-        this.valence = valence;
     }
 
     public Long getNumberPositiveSenses() {

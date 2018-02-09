@@ -2,18 +2,12 @@ package edu.slapoguzov.emodetect.sense.net.api.model;
 
 import java.util.List;
 
-public class Collocation implements Sensitive {
+public class Collocation extends Sensitive {
     private CollocationUnit action;
     private CollocationUnit subject;
     private CollocationUnit object;
 
     private List<CollocationRelation> relations;
-
-    private Double valence;
-
-    public Double getValence() {
-        return this.valence;
-    }
 
     public CollocationUnit getAction() {
         return action;
@@ -47,7 +41,4 @@ public class Collocation implements Sensitive {
         this.relations = relations;
     }
 
-    public void setValence(Double valence) {
-        this.valence = valence;
-    }
 }
