@@ -6,8 +6,8 @@ public abstract class CollocationUnit extends Sensitive {
     private List<Word> words;
     private List<CollocationUnit> relations;
 
-    private Long numberPositiveSenses;
-    private Long numberNegativeSenses;
+    private long numberPositiveSenses;
+    private long numberNegativeSenses;
 
     public List<Word> getWords() {
         return words;
@@ -25,19 +25,19 @@ public abstract class CollocationUnit extends Sensitive {
         this.relations = relations;
     }
 
-    public Long getNumberPositiveSenses() {
+    public long getNumberPositiveSenses() {
         return numberPositiveSenses;
     }
 
-    public void setNumberPositiveSenses(Long numberPositiveSenses) {
+    public void setNumberPositiveSenses(long numberPositiveSenses) {
         this.numberPositiveSenses = numberPositiveSenses;
     }
 
-    public Long getNumberNegativeSenses() {
+    public long getNumberNegativeSenses() {
         return numberNegativeSenses;
     }
 
-    public void setNumberNegativeSenses(Long numberNegativeSenses) {
+    public void setNumberNegativeSenses(long numberNegativeSenses) {
         this.numberNegativeSenses = numberNegativeSenses;
     }
 }

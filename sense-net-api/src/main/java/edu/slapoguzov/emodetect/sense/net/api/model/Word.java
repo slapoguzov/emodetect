@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Word {
     private String text;
-    private Boolean isNegation;
+    private boolean isNegation;
     private List<MorphoCharacteristic> morphoCharacteristics;
 
     public String getText() {
@@ -15,11 +15,11 @@ public class Word {
         this.text = text;
     }
 
-    public Boolean getNegation() {
+    public boolean getNegation() {
         return isNegation;
     }
 
-    public void setNegation(Boolean negation) {
+    public void setNegation(boolean negation) {
         isNegation = negation;
     }
 
