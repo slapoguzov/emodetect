@@ -4,5 +4,6 @@ public enum CollocationRelationType {
     AND,
     OR,
     BUT,
-    IF
+    IF,
+    EXPLANATORY
 }

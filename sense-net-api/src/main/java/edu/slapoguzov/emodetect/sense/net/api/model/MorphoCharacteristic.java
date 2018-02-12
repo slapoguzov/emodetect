@@ -7,7 +7,9 @@ public enum MorphoCharacteristic {
     VERB,
     ADJECTIVE,
     NOUN,
+    PRONOUN,
     ADVERB,
+    NUMERAL,
 
     /**
      * Время
