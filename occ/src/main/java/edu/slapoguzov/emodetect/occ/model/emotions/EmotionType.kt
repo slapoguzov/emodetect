@@ -15,7 +15,7 @@ enum class EmotionType(
     HAPPY_FOR(
             cognitiveVariables = listOf(
                     SelfReaction.PLEASED,
-                    OtherPresumtion.DESIRABLE,
+                    OtherPresumption.DESIRABLE,
                     AgentFondness.LIKED,
                     DirectionOfEmotion.OTHER
             )
@@ -32,7 +32,7 @@ enum class EmotionType(
             cognitiveVariables = listOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
-                    OtherPresumtion.UNDESIRABLE,
+                    OtherPresumption.UNDESIRABLE,
                     AgentFondness.LIKED,
                     DirectionOfEmotion.OTHER
             )
@@ -41,7 +41,7 @@ enum class EmotionType(
             cognitiveVariables = listOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
-                    OtherPresumtion.DESIRABLE,
+                    OtherPresumption.DESIRABLE,
                     AgentFondness.NOT_LIKED,
                     DirectionOfEmotion.OTHER
             )
@@ -50,7 +50,7 @@ enum class EmotionType(
             cognitiveVariables = listOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
-                    OtherPresumtion.UNDESIRABLE,
+                    OtherPresumption.UNDESIRABLE,
                     AgentFondness.NOT_LIKED,
                     DirectionOfEmotion.OTHER
             )
@@ -137,7 +137,7 @@ enum class EmotionType(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     SelfAppraisal.PRAISEWORTHY,
-                    OtherPresumtion.DESIRABLE,
+                    OtherPresumption.DESIRABLE,
                     DirectionOfEmotion.OTHER
             )
     ),
@@ -146,7 +146,7 @@ enum class EmotionType(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     SelfAppraisal.BLAMEWORTHY,
-                    OtherPresumtion.UNDESIRABLE,
+                    OtherPresumption.UNDESIRABLE,
                     DirectionOfEmotion.OTHER
             )
     ),
