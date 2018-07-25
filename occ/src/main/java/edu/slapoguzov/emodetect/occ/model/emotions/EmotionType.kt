@@ -3,17 +3,17 @@ package edu.slapoguzov.emodetect.occ.model.emotions
 import edu.slapoguzov.emodetect.occ.model.variables.*
 
 enum class EmotionType(
-        val cognitiveVariables: List<CognitiveVariable>
+        val cognitiveVariables: Set<CognitiveVariable>
 ) {
     JOY(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     SelfPresumption.DESIRABLE
             )
     ),
     HAPPY_FOR(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     SelfReaction.PLEASED,
                     OtherPresumption.DESIRABLE,
                     AgentFondness.LIKED,
@@ -21,7 +21,7 @@ enum class EmotionType(
             )
     ),
     DISTRESS(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     SelfPresumption.UNDESIRABLE,
@@ -29,7 +29,7 @@ enum class EmotionType(
             )
     ),
     SORRY_FOR(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     OtherPresumption.UNDESIRABLE,
@@ -38,7 +38,7 @@ enum class EmotionType(
             )
     ),
     RESENTMENT(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     OtherPresumption.DESIRABLE,
@@ -47,7 +47,7 @@ enum class EmotionType(
             )
     ),
     GLOATING(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     OtherPresumption.UNDESIRABLE,
@@ -56,7 +56,7 @@ enum class EmotionType(
             )
     ),
     HOPE(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     Prospect.POSITIVE,
@@ -66,17 +66,17 @@ enum class EmotionType(
             )
     ),
     FEAR(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
-                    Prospect.POSITIVE,
-                    SelfPresumption.DESIRABLE,
+                    Prospect.NEGATIVE,
+                    SelfPresumption.UNDESIRABLE,
                     Status.UNCONFIRMED,
                     DirectionOfEmotion.SELF
             )
     ),
     SATISFACTION(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     Prospect.POSITIVE,
@@ -86,26 +86,27 @@ enum class EmotionType(
             )
     ),
     FEARS_CONFIRMED(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     Prospect.NEGATIVE,
-                    SelfPresumption.DESIRABLE,
+                    SelfPresumption.UNDESIRABLE,
                     Status.CONFIRMED,
                     DirectionOfEmotion.SELF
             )
     ),
     RELIEF(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     Prospect.NEGATIVE,
                     SelfPresumption.UNDESIRABLE,
-                    Status.DISCONFIRMED, DirectionOfEmotion.SELF
+                    Status.DISCONFIRMED,
+                    DirectionOfEmotion.SELF
             )
     ),
     DISAPPOINTMENT(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     Prospect.POSITIVE,
@@ -115,7 +116,7 @@ enum class EmotionType(
             )
     ),
     PRIDE(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     SelfAppraisal.PRAISEWORTHY,
@@ -124,7 +125,7 @@ enum class EmotionType(
             )
     ),
     SHAME(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     SelfAppraisal.BLAMEWORTHY,
@@ -133,7 +134,7 @@ enum class EmotionType(
             )
     ),
     ADMIRATION(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.PLEASED,
                     SelfAppraisal.PRAISEWORTHY,
@@ -142,7 +143,7 @@ enum class EmotionType(
             )
     ),
     REPROACH(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     SelfAppraisal.BLAMEWORTHY,
@@ -151,7 +152,7 @@ enum class EmotionType(
             )
     ),
     LOVE(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfPresumption.DESIRABLE,
                     SelfReaction.PLEASED,
@@ -162,7 +163,7 @@ enum class EmotionType(
             )
     ),
     HATE(
-            cognitiveVariables = listOf(
+            cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfPresumption.UNDESIRABLE,
                     SelfReaction.DISPLEASED,
@@ -171,5 +172,23 @@ enum class EmotionType(
                     // TODO: event valency = negative
                     DirectionOfEmotion.OTHER
             )
+    ),
+    GRATIFICATION(
+            cognitiveVariables = JOY.cognitiveVariables + PRIDE.cognitiveVariables
+    ),
+    REMORSE(
+            cognitiveVariables = DISTRESS.cognitiveVariables + SHAME.cognitiveVariables
+    ),
+    GRATITUDE(
+            cognitiveVariables = JOY.cognitiveVariables + ADMIRATION.cognitiveVariables
+    ),
+    ANGER(
+            cognitiveVariables = DISTRESS.cognitiveVariables + REPROACH.cognitiveVariables
+    ),
+    SHOCK(
+            cognitiveVariables = DISTRESS.cognitiveVariables + Unexpectedness.TRUE
+    ),
+    SURPRISE(
+            cognitiveVariables = JOY.cognitiveVariables + Unexpectedness.TRUE
     )
 }
