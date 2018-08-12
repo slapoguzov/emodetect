@@ -40,7 +40,7 @@ class EmotionsDetectorTest {
         val e2: Set<CognitiveVariable> = setOf(
                 ObjectFondness.LIKED,
                 AgentFondness.LIKED,
-                DirectionOfEmotion.OTHER,
+                DirectionOfEmotion.SELF,
                 ObjectAppealing.NEUTRAL,
                 SelfReaction.DISPLEASED,
                 SelfPresumption.UNDESIRABLE,
@@ -56,10 +56,12 @@ class EmotionsDetectorTest {
         )
         val e3: Set<CognitiveVariable> = setOf(
                 ObjectFondness.LIKED,
+                AgentFondness.LIKED,
                 DirectionOfEmotion.OTHER,
                 ObjectAppealing.ATTRACTIVE,
                 SelfReaction.PLEASED,
                 SelfPresumption.DESIRABLE,
+                OtherPresumption.DESIRABLE,
                 Prospect.POSITIVE,
                 Status.CONFIRMED,
                 Unexpectedness.TRUE,
@@ -72,7 +74,7 @@ class EmotionsDetectorTest {
         )
 
         val cognitiveVariables: Set<CognitiveVariable> = e1 + e2 + e3
-        val actualResult = emotionsDetector.detect(cognitiveVariables)
+        val actualResult = emotionsDetector.detect(e3)
         println(actualResult)
     }
 }

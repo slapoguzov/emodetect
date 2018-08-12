@@ -129,7 +129,7 @@ enum class EmotionType(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
                     SelfAppraisal.BLAMEWORTHY,
-                    SelfPresumption.DESIRABLE,
+                    SelfPresumption.UNDESIRABLE,
                     DirectionOfEmotion.SELF
             )
     ),

@@ -13,7 +13,7 @@ class EmotionsDetector {
         val emotionTypes = EmotionType.values().filter {
             cognitiveVariables.containsAll(it.cognitiveVariables)
         }.toSet()
-        logger.info { "dirty emotionTypes: $emotionTypes" }
+        logger.info { "redundant emotionTypes: $emotionTypes" }
         val clearEmotionTypes = collapseProcessor.process(emotionTypes)
         logger.info { "clear emotionTypes: $clearEmotionTypes" }
         return emotionTypes
