@@ -1,29 +1,21 @@
 package edu.slapoguzov.emodetect.sentence
 
-import edu.slapoguzov.emodetect.sentence.mystem.MyStemFactory
-import ru.stachek66.nlp.mystem.holding.Request
+import edu.slapoguzov.emodetect.relations.RelationExtractorFactory
+import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
 
 
 object Application {
-    private val parserModelPath = getPathToFile("nndep.rus.model90.9_88.6.txt.gz")
-    private val taggerPath = getPathToFile("russian-ud-pos.tagger")
-    private val mfPath = getPathToFile("russian-ud-mf.tagger")
-    private val dictPath = getPathToFile("dict.tsv")
+    private val relationExtractor = RelationExtractorFactory().getInstance()
+    private val myStem = MyStemFactory().getMyStem()
 
-    private val relationExtractor = RelationExtractor(parserModelPath, taggerPath, mfPath, dictPath)
-    private val myStemFactory = MyStemFactory()
-    private val myStem = myStemFactory.getMyStem()
     private val morphoProcessor = MorphoProcessor(myStem)
-    private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor)
+    private val relationProcessor = RelationProcessor()
+    private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor, relationProcessor)
 
     fun run() {
-        val text = "Внезапно я нашел его в самолете"
+        val text = "Внезапно я нашел его в самолете, но он был пьян"
         val sentence = collectingProcessor.process(text)
         println(sentence)
-    }
-
-    private fun getPathToFile(name: String): String {
-        return this::class.java.classLoader.getResource(name).toURI().path
     }
 }
 

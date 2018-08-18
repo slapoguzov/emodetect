@@ -12,6 +12,8 @@
         <module>occ</module>
         <module>sentence</module>
         <module>morpho</module>
+        <module>relations</module>
+        <module>core</module>
     </modules>
 
     <properties>
@@ -25,6 +27,16 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>relations</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>morpho</artifactId>

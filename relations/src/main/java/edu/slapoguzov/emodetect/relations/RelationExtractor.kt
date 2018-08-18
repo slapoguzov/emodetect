@@ -1,4 +1,4 @@
-package edu.slapoguzov.emodetect.sentence
+package edu.slapoguzov.emodetect.relations
 
 import edu.stanford.nlp.international.russian.process.RussianProcessor
 import edu.stanford.nlp.ling.CoreAnnotations
@@ -12,16 +12,15 @@ import java.io.StringWriter
 import java.io.Writer
 
 class RelationExtractor(
-        private val parserModelPath: String,
-        private val taggerPath: String,
-        private val mfPath: String,
-        private val dictPath: String
+        parserModelPath: String,
+        taggerPath: String,
+        mfPath: String,
+        dictPath: String
 ) {
     private val russianProcessor = RussianProcessor(parserModelPath, taggerPath, mfPath, dictPath)
 
     fun extract(text: List<String>): List<Annotation> {
         val proccesText = russianProcessor.proccesText(text)
-        val stringWriter = StringWriter()
         proccesText.forEach { russianProcessor.conlluPrint(it, System.out.bufferedWriter()) }
         return proccesText
     }

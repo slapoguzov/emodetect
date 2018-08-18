@@ -1,26 +1,20 @@
-package edu.slapoguzov.emodetect.sentence.mystem
+package edu.slapoguzov.emodetect.morpho.mystem
 
+import edu.slapoguzov.emodetect.core.getPathToResource
+import edu.slapoguzov.emodetect.sentence.mystem.MyStemWrapper
 import ru.stachek66.nlp.mystem.holding.Factory
-import ru.stachek66.nlp.mystem.holding.MyStem
-import ru.stachek66.nlp.mystem.holding.Request
-import ru.stachek66.nlp.mystem.model.Info
 import scala.Option
-import scala.collection.JavaConversions
 import java.io.File
 
 class MyStemFactory {
-    private val pathToFile = getPathToFile("mystem-3.1.exe")
+    private val pathToFile = this.javaClass.getPathToResource("mystem-3.1.exe")
     private val execFile =  File(pathToFile)
     private val args = "-igd --eng-gr --format json"
     private val version = "3.0"
+    private val myStem = Factory(args).newMyStem(version, Option.apply(execFile)).get()
 
     fun getMyStem(): MyStemWrapper {
-        val myStem = Factory(args).newMyStem(version, Option.apply(execFile)).get()
         return MyStemWrapper(myStem)
-    }
-
-    private fun getPathToFile(name: String): String {
-        return this::class.java.classLoader.getResource(name).toURI().path
     }
 }
 

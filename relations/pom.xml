@@ -9,13 +9,19 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>morpho</artifactId>
-
+    <artifactId>relations</artifactId>
 
     <dependencies>
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
             <artifactId>core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.stanford.nlp</groupId>
+            <artifactId>stanford-corenlp</artifactId>
+            <version>3.7.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/../libs/stanford-corenlp-3.7.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
@@ -28,10 +34,6 @@
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ru.stachek66.nlp</groupId>
-            <artifactId>mystem-scala</artifactId>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -65,6 +67,5 @@
             </plugin>
         </plugins>
     </build>
-
 
 </project>
