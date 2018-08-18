@@ -8,14 +8,19 @@ import scala.Option
 import scala.collection.JavaConversions
 import java.io.File
 
-class MyStemFactory(pathToMyStem: String) {
-    private val execFile =  File(pathToMyStem)
+class MyStemFactory {
+    private val pathToFile = getPathToFile("mystem-3.1.exe")
+    private val execFile =  File(pathToFile)
     private val args = "-igd --eng-gr --format json"
     private val version = "3.0"
 
     fun getMyStem(): MyStemWrapper {
         val myStem = Factory(args).newMyStem(version, Option.apply(execFile)).get()
         return MyStemWrapper(myStem)
+    }
+
+    private fun getPathToFile(name: String): String {
+        return this::class.java.classLoader.getResource(name).toURI().path
     }
 }
 

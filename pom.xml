@@ -11,6 +11,7 @@
     <modules>
         <module>occ</module>
         <module>sentence</module>
+        <module>morpho</module>
     </modules>
 
     <properties>
@@ -24,6 +25,11 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>morpho</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>
                 <artifactId>jackson-module-kotlin</artifactId>

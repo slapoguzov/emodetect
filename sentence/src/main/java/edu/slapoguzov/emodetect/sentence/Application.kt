@@ -9,10 +9,9 @@ object Application {
     private val taggerPath = getPathToFile("russian-ud-pos.tagger")
     private val mfPath = getPathToFile("russian-ud-mf.tagger")
     private val dictPath = getPathToFile("dict.tsv")
-    private val myStemPath = getPathToFile("mystem-3.1.exe")
 
     private val relationExtractor = RelationExtractor(parserModelPath, taggerPath, mfPath, dictPath)
-    private val myStemFactory = MyStemFactory(myStemPath)
+    private val myStemFactory = MyStemFactory()
     private val myStem = myStemFactory.getMyStem()
     private val morphoProcessor = MorphoProcessor(myStem)
     private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor)
