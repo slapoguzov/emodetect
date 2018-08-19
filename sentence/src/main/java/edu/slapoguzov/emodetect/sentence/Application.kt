@@ -1,11 +1,12 @@
 package edu.slapoguzov.emodetect.sentence
 
-import edu.slapoguzov.emodetect.relations.RelationExtractorFactory
+import edu.slapoguzov.emodetect.relations.StanfordNlpExtractorFactory
 import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
+import edu.slapoguzov.emodetect.relations.RemoteSyntaxNetExtractor
 
 
 object Application {
-    private val relationExtractor = RelationExtractorFactory().getInstance()
+    private val relationExtractor = RemoteSyntaxNetExtractor()
     private val myStem = MyStemFactory().getMyStem()
 
     private val morphoProcessor = MorphoProcessor(myStem)

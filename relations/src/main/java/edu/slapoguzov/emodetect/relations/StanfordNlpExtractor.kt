@@ -1,5 +1,6 @@
 package edu.slapoguzov.emodetect.relations
 
+import edu.slapoguzov.emodetect.relations.model.connl.ConnlSentence
 import edu.stanford.nlp.international.russian.process.RussianProcessor
 import edu.stanford.nlp.ling.CoreAnnotations
 import edu.stanford.nlp.ling.CoreAnnotations.SentencesAnnotation
@@ -11,29 +12,26 @@ import java.io.BufferedWriter
 import java.io.StringWriter
 import java.io.Writer
 
-class RelationExtractor(
+class StanfordNlpExtractor(
         parserModelPath: String,
         taggerPath: String,
         mfPath: String,
         dictPath: String
-) {
+) : RelationsExtractor {
     private val russianProcessor = RussianProcessor(parserModelPath, taggerPath, mfPath, dictPath)
+    private val connlReader = ConnlReader()
 
-    fun extract(text: List<String>): List<Annotation> {
+    private fun extract(text: List<String>): List<ConnlSentence> {
         val proccesText = russianProcessor.proccesText(text)
-        proccesText.forEach { russianProcessor.conlluPrint(it, System.out.bufferedWriter()) }
-        return proccesText
-    }
-
-    fun extract(text: String): Annotation {
-        return extract(listOf(text)).first()
-    }
-
-    fun extractSemanticGraph(text: String): List<SemanticGraph> {
-        val document = extract(text)
-        val sentences = document.get(SentencesAnnotation::class.java)
-        return sentences.map { sentence ->
-            sentence.get(SemanticGraphCoreAnnotations.BasicDependenciesAnnotation::class.java)
+        return proccesText.map {
+            val stringWriter = StringWriter()
+            val bufferedWriter = BufferedWriter(stringWriter)
+            russianProcessor.conlluPrint(it, bufferedWriter)
+            connlReader.read(stringWriter.toString())
         }
+    }
+
+    override fun extract(text: String): ConnlSentence {
+        return extract(listOf(text)).first()
     }
 }
