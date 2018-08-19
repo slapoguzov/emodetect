@@ -4,6 +4,7 @@ enum class Characteristic {
     PAST_TENSE,
     PRESENT_TENSE,
     FUTURE_TENESE,
+    IS_ADV,
     IS_SUDDENLY,
 
     IS_AGENT,

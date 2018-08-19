@@ -5,11 +5,13 @@ enum class PartOfSpeech {
     VERB,
     ADJECTIVE,
     PRONOUN,
+    PUNCTUATION,
     NUMERAL,
     ADVERB,
     CONJUNCTION,
     PARTICLE,
     INTERJECTION,
     MODAL_WORD,
-    EXCLAMATION
+    EXCLAMATION,
+    OTHER
 }

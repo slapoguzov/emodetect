@@ -1,6 +1,5 @@
 package edu.slapoguzov.emodetect.sentence
 
-import edu.slapoguzov.emodetect.relations.StanfordNlpExtractorFactory
 import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
 import edu.slapoguzov.emodetect.relations.RemoteSyntaxNetExtractor
 
@@ -14,7 +13,7 @@ object Application {
     private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor, relationProcessor)
 
     fun run() {
-        val text = "Внезапно я нашел его в самолете, но он был пьян"
+        val text = "Внезапно я нашел его в самолете ."
         val sentence = collectingProcessor.process(text)
         println(sentence)
     }

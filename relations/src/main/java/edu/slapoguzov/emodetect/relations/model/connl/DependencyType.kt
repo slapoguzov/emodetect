@@ -42,7 +42,9 @@ enum class DependencyType(val text: String) {
 
     companion object {
         fun of(value: String): DependencyType {
-            return DependencyType.values().find { it.text == value } ?: OTHER
+            return DependencyType.values().find { it.text == value }
+                    ?: DependencyType.values().find { value.contains(it.text) }
+                    ?: OTHER
         }
     }
 }
