@@ -2,6 +2,7 @@ package edu.slapoguzov.emodetect.sentence
 
 import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
 import edu.slapoguzov.emodetect.relations.RemoteSyntaxNetExtractor
+import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 
 
 object Application {
@@ -10,7 +11,8 @@ object Application {
 
     private val morphoProcessor = MorphoProcessor(myStem)
     private val relationProcessor = RelationProcessor()
-    private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor, relationProcessor)
+    private val statisticsComponent = StatisticsComponent()
+    private val collectingProcessor = CollectingProcessor(morphoProcessor, relationExtractor, relationProcessor, statisticsComponent)
 
     fun run() {
         val text = "Внезапно я нашел его в самолете ."

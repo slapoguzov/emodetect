@@ -14,6 +14,7 @@
         <module>morpho</module>
         <module>relations</module>
         <module>core</module>
+        <module>statistics</module>
     </modules>
 
     <properties>
@@ -23,10 +24,16 @@
         <slf4j.version>1.7.25</slf4j.version>
         <mystem.version>0.1.4</mystem.version>
         <jackson.version>2.9.0</jackson.version>
+        <opencsv.version>4.2</opencsv.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>statistics</artifactId>
+                <version>${project.version}</version>
+            </dependency>
             <dependency>
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>core</artifactId>
@@ -41,6 +48,11 @@
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>morpho</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.opencsv</groupId>
+                <artifactId>opencsv</artifactId>
+                <version>${opencsv.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.module</groupId>

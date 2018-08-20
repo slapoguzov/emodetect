@@ -1,7 +1,8 @@
 package edu.slapoguzov.emodetect.sentence.model
 
 data class Word(
-        val text: String,
+        val form: String,
+        val lemma: String?,
         val partOfSpeech: PartOfSpeech,
         val popularity: Double,
         val characteristics: List<Characteristic>,
