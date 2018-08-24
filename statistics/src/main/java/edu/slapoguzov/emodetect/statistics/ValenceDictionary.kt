@@ -13,7 +13,8 @@ class ValenceDictionary() {
     val dictionary: Map<String, ValencedWord>
 
     init {
-        val file = File(this.javaClass.getPathToResource("valency/valenceDictionary.json"))
+        val path = this.javaClass.getPathToResource("valency/valenceDictionary.json")
+        val file = File(path)
         val valencedWords = mapper.readValue<List<ValencedWord>>(file)
         dictionary = valencedWords.associateBy { it.token }
     }
@@ -25,5 +26,13 @@ class ValenceDictionary() {
     fun getValence(words: List<String>): Double {
         val total = words.sumByDouble { dictionary[it]?.valence ?: 0.0 }
         return total / words.size
+    }
+
+    fun getCountPositiveSense(word: String): Int {
+        return dictionary[word]?.numberPositiveSenses ?: 1
+    }
+
+    fun getCountNegativeSense(word: String): Int {
+        return dictionary[word]?.numberNegativeSenses ?: 1
     }
 }

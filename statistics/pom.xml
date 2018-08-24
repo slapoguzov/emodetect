@@ -21,6 +21,10 @@
             <artifactId>core</artifactId>
         </dependency>
         <dependency>
+            <groupId>edu.slapoguzov.emodetect</groupId>
+            <artifactId>relations</artifactId>
+        </dependency>
+        <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>
             <artifactId>jackson-module-kotlin</artifactId>
         </dependency>

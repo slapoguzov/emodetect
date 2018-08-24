@@ -25,6 +25,7 @@
         <mystem.version>0.1.4</mystem.version>
         <jackson.version>2.9.0</jackson.version>
         <opencsv.version>4.2</opencsv.version>
+        <commons-net.version>3.6</commons-net.version>
     </properties>
 
     <dependencyManagement>
@@ -48,6 +49,11 @@
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>morpho</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${commons-net.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.opencsv</groupId>
