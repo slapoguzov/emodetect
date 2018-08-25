@@ -17,6 +17,7 @@ class ConnlReader {
 
         private val NEW_LINE = Regex("\n")
         private val DELIMITER = Regex("\t+|[ ]+")
+        private val NON_ALPHABETIC = Regex("\\P{L}")
     }
 
 
@@ -43,7 +44,7 @@ class ConnlReader {
         return SourceLine(
                 id = tokens[ID]!!,
                 form = tokens[FORM]!!,
-                lemma = tokens[LEMMA],
+                lemma = tokens[LEMMA] ?: tokens[FORM]!!.toLemma(),
                 cpostag = tokens[CPOSTAG],
                 postag = tokens[POSTAG],
                 feats = tokens[FEATS],
@@ -57,7 +58,7 @@ class ConnlReader {
     data class SourceLine(
             val id: String,
             val form: String,
-            val lemma: String?,
+            val lemma: String,
             val cpostag: String?,
             val postag: String?,
             val feats: String?,
@@ -77,6 +78,10 @@ class ConnlReader {
                     dependencies = mutableListOf()
             )
         }
+    }
+
+    fun String.toLemma(): String {
+        return this.replace(NON_ALPHABETIC, "").toLowerCase()
     }
 
 }

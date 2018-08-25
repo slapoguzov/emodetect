@@ -11,6 +11,6 @@ class RemoteSyntaxNetExtractorTest {
 
     @Test
     fun test() {
-        testable.extract("Внезапно я нашел его в самолете .")
+        testable.extract("Мама мыла")
     }
 }

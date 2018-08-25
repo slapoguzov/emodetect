@@ -22,7 +22,7 @@ object ValencyDictionariesMerge {
 
         linisCrowdRows.forEach { valencedWords.merge(it.word, it.valency) }
         russentilexRows.forEach { valencedWords.merge(it.word, it.valency) }
-        mapper.writeValue(File("valenceDictionary.json"), valencedWords.values)
+        mapper.writeValue(File("popularityDictionary.json"), valencedWords.values)
         println(linisCrowdRows)
     }
 

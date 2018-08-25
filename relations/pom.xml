@@ -13,10 +13,6 @@
 
     <dependencies>
         <dependency>
-            <groupId>commons-net</groupId>
-            <artifactId>commons-net</artifactId>
-        </dependency>
-        <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
             <artifactId>core</artifactId>
         </dependency>

@@ -65,6 +65,11 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+                <configuration>
+                    <compilerPlugins>
+                        <plugin>no-arg</plugin>
+                    </compilerPlugins>
+                </configuration>
             </plugin>
         </plugins>
     </build>
