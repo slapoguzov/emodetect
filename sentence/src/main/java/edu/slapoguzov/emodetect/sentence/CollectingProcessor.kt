@@ -1,5 +1,6 @@
 package edu.slapoguzov.emodetect.sentence
 
+import edu.slapoguzov.emodetect.relations.MorphoProcessor
 import edu.slapoguzov.emodetect.relations.RelationsExtractor
 import edu.slapoguzov.emodetect.relations.model.connl.Token
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters
@@ -9,42 +10,36 @@ import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 import mu.KLogging
 
 class CollectingProcessor(
-        private val morphoProcessor: MorphoProcessor,
         private val relationExtractor: RelationsExtractor,
         private val relationProcessor: RelationProcessor,
         private val statisticsComponent: StatisticsComponent
 ) {
 
     fun process(text: String): Sentence {
-        val morphoUnits = morphoProcessor.process(text)
         val connlSentence = relationExtractor.extract(text)
         val allWords = mutableListOf<Word>() // TODO: не факт, что хорошее решение
         connlSentence.allRelations.forEach {
             val relationChars = relationProcessor.process(RelationProcessorParameters(it.dependencyType))
-            val src = buildWord(it.src, morphoUnits, relationChars.srcCharacteristics)
-            val target = buildWord(it.target, morphoUnits, relationChars.targetCharacteristics)
+            val src = buildWord(it.src,relationChars.srcCharacteristics)
+            val target = buildWord(it.target, relationChars.targetCharacteristics)
             allWords.merge(src)
             allWords.merge(target)
         }
 
-        val clauseValence = statisticsComponent.getPopularity(allWords.mapNotNull { it.lemma })
+        val clauseValence = statisticsComponent.getValence(allWords.mapNotNull { it.lemma })
         val clause = Clause(allWords, emptyList(), clauseValence)
 
-        val sentenceValence = statisticsComponent.getPopularity(allWords.mapNotNull { it.lemma })
+        val sentenceValence = statisticsComponent.getValence(allWords.mapNotNull { it.lemma })
         return Sentence(listOf(clause), sentenceValence)
     }
 
-    private fun buildWord(token: Token, morphoUnits: Map<Int, StemUnit>, srcCharacteristics: List<Characteristic>): Word {
-        val tokenPartOfSpeach = token.partOfSpeach.toPartOfSpeach()
-        val partOfSpeech = if (tokenPartOfSpeach == PartOfSpeech.OTHER) {
-            morphoUnits[token.position]?.partOfSpeach?.toPartOfSpeach()
-        } else tokenPartOfSpeach
-        val popularity = token.lemma?.let { statisticsComponent.getPopularity(it) } ?: 0.0
-        val valence = token.lemma?.let { statisticsComponent.getValence(it) } ?: 0.0
+    private fun buildWord(token: Token, srcCharacteristics: List<Characteristic>): Word {
+        val popularity = token.lemma.let { statisticsComponent.getPopularity(it) }
+        val valence = token.lemma.let { statisticsComponent.getValence(it) }
         return Word(
                 form = token.form,
                 lemma = token.lemma,
-                partOfSpeech = partOfSpeech ?: throw Exception(""),
+                partOfSpeech =  token.partOfSpeach.toPartOfSpeach(),
                 popularity = popularity,
                 characteristics = srcCharacteristics,
                 position = token.position,

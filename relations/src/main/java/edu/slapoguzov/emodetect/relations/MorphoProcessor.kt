@@ -1,4 +1,4 @@
-package edu.slapoguzov.emodetect.sentence
+package edu.slapoguzov.emodetect.relations
 
 import edu.slapoguzov.emodetect.sentence.mystem.MyStemWrapper
 import edu.slapoguzov.emodetect.sentence.mystem.model.StemUnit

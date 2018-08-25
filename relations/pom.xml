@@ -14,6 +14,10 @@
     <dependencies>
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
+            <artifactId>morpho</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.slapoguzov.emodetect</groupId>
             <artifactId>core</artifactId>
         </dependency>
         <dependency>

@@ -1,6 +1,5 @@
 package edu.slapoguzov.emodetect.relations
 
-import org.junit.Assert.*
 import org.junit.Test
 
 class ConnlReaderTest {

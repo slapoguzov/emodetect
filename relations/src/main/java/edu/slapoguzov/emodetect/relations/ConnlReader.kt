@@ -1,8 +1,10 @@
 package edu.slapoguzov.emodetect.relations
 
 import edu.slapoguzov.emodetect.relations.model.connl.*
+import edu.slapoguzov.emodetect.sentence.mystem.model.StemUnit
 
 class ConnlReader {
+
     companion object {
         private val ID = 0
         private val FORM = 1
@@ -21,10 +23,11 @@ class ConnlReader {
     }
 
 
-    fun read(text: String): ConnlSentence {
+    //TODO: очень плохо, что нам сюда приходится передавать morphoUnits
+    fun read(text: String, morphoUnits: Map<Int, StemUnit> = emptyMap()): ConnlSentence {
         val lines = text.split(NEW_LINE)
                 .filter { it.isNotEmpty() }
-                .map { split(it) }
+                .map { split(it, morphoUnits) }
         val tokens = lines.associate { it.id to it.toToken()}
         val dependencies = lines.groupBy({ it.dep }, { tokens[it.id]!! })
         tokens.forEach { (_, tkn) ->
@@ -39,12 +42,12 @@ class ConnlReader {
         return ConnlSentence(tokens.values.toList())
     }
 
-    private fun split(it: String): SourceLine {
+    private fun split(it: String, morphoUnits: Map<Int, StemUnit>): SourceLine {
         val tokens = it.split(DELIMITER).map { if (it == "_") null else it }
         return SourceLine(
                 id = tokens[ID]!!,
                 form = tokens[FORM]!!,
-                lemma = tokens[LEMMA] ?: tokens[FORM]!!.toLemma(),
+                lemma = tokens[LEMMA] ?: morphoUnits[tokens[ID]!!.toInt()]?.lex ?: tokens[FORM]!!.toLemma(),
                 cpostag = tokens[CPOSTAG],
                 postag = tokens[POSTAG],
                 feats = tokens[FEATS],
