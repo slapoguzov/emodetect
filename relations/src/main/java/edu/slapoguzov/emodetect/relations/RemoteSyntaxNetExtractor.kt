@@ -33,7 +33,9 @@ class RemoteSyntaxNetExtractor(
 
             val input = BufferedReader(InputStreamReader(socket.getInputStream()))
             val connlText = input.readText()
-            return connlReader.read(connlText, morphoUnits)
+            val connlRows = connlReader.readSourceLines(connlText)
+            ConnlEnricher.enrich(connlRows, morphoUnits)
+            return connlReader.read(connlRows)
         } catch (e: SocketException) {
             socket.close()
             socket = Socket(host, port)

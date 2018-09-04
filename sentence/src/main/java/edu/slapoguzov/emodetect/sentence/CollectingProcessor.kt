@@ -19,7 +19,7 @@ class CollectingProcessor(
         val connlSentence = relationExtractor.extract(text)
         val allWords = mutableListOf<Word>() // TODO: не факт, что хорошее решение
         connlSentence.allRelations.forEach {
-            val relationChars = relationProcessor.process(RelationProcessorParameters(it.dependencyType))
+            val relationChars = relationProcessor.process(RelationProcessorParameters(it))
             val src = buildWord(it.src,relationChars.srcCharacteristics)
             val target = buildWord(it.target, relationChars.targetCharacteristics)
             allWords.merge(src)

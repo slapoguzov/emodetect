@@ -14,7 +14,7 @@ object Application {
     private val collectingProcessor = CollectingProcessor(relationExtractor, relationProcessor, statisticsComponent)
 
     fun run() {
-        val text = "Внезапно я нашел пьяным его в самолете ."
+        val text = "Я не мог его разбудить"
         val sentence = collectingProcessor.process(text)
         println(sentence)
     }
