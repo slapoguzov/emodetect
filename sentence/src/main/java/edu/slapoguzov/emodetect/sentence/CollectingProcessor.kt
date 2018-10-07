@@ -1,11 +1,10 @@
 package edu.slapoguzov.emodetect.sentence
 
-import edu.slapoguzov.emodetect.relations.MorphoProcessor
+import edu.slapoguzov.emodetect.morpho.model.Grammem
 import edu.slapoguzov.emodetect.relations.RelationsExtractor
 import edu.slapoguzov.emodetect.relations.model.connl.Token
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters
 import edu.slapoguzov.emodetect.sentence.model.*
-import edu.slapoguzov.emodetect.sentence.mystem.model.StemUnit
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 import mu.KLogging
 
@@ -20,8 +19,20 @@ class CollectingProcessor(
         val allWords = mutableListOf<Word>() // TODO: не факт, что хорошее решение
         connlSentence.allRelations.forEach {
             val relationChars = relationProcessor.process(RelationProcessorParameters(it))
-            val src = buildWord(it.src,relationChars.srcCharacteristics)
-            val target = buildWord(it.target, relationChars.targetCharacteristics)
+            val srcOtherMorphoChars = it.src.misc
+                    ?.split(",")
+                    ?.filter { it.isNotEmpty() }
+                    ?.mapNotNull { Grammem.valueOf(it).toCharacteristic() }
+                    .orEmpty()
+            val targetOtherMorphoChars = it.target.misc
+                    ?.split(",")
+                    ?.filter { it.isNotEmpty() }
+                    ?.mapNotNull { Grammem.valueOf(it).toCharacteristic() }
+                    .orEmpty()
+            val srcAllChars = relationChars.srcCharacteristics + srcOtherMorphoChars
+            val targetAllChars = relationChars.targetCharacteristics + targetOtherMorphoChars
+            val src = buildWord(it.src, srcAllChars)
+            val target = buildWord(it.target, targetAllChars)
             allWords.merge(src)
             allWords.merge(target)
         }
@@ -39,7 +50,7 @@ class CollectingProcessor(
         return Word(
                 form = token.form,
                 lemma = token.lemma,
-                partOfSpeech =  token.partOfSpeach.toPartOfSpeach(),
+                partOfSpeech = token.partOfSpeach.toPartOfSpeach(),
                 popularity = popularity,
                 characteristics = srcCharacteristics,
                 position = token.position,

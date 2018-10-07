@@ -6,7 +6,8 @@ data class Token(
         val partOfSpeach: PartOfSpeach,
         val feats: String?,
         val position: Int,
-        val dependencies: MutableList<Dependency>
+        val dependencies: MutableList<Dependency>,
+        val misc: String? = null
 ) {
     fun addDependencies(deps: List<Dependency>) {
         this.dependencies += deps

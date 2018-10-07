@@ -1,8 +1,10 @@
 package edu.slapoguzov.emodetect.sentence
 
+import edu.slapoguzov.emodetect.morpho.model.Grammem
 import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach as ConnlPartOfSpeach
 import edu.slapoguzov.emodetect.sentence.model.PartOfSpeech
-import edu.slapoguzov.emodetect.sentence.mystem.model.Grammem
+import edu.slapoguzov.emodetect.morpho.mystem.model.StemGrammem
+import edu.slapoguzov.emodetect.sentence.model.Characteristic
 
 fun ConnlPartOfSpeach.toPartOfSpeach(): PartOfSpeech {
     return when (this) {
@@ -28,23 +30,32 @@ fun ConnlPartOfSpeach.toPartOfSpeach(): PartOfSpeech {
     }
 }
 
-fun Grammem.toPartOfSpeach(): PartOfSpeech {
+fun StemGrammem.toPartOfSpeach(): PartOfSpeech {
     return when (this) {
-        Grammem.ADJECTIVE -> PartOfSpeech.ADJECTIVE
-        Grammem.ADVERB -> PartOfSpeech.ADVERB
-        Grammem.ADVERB_PRO -> PartOfSpeech.ADVERB
-        Grammem.ADJECTIVE_NUM -> PartOfSpeech.ADJECTIVE
-        Grammem.ADJECTIVE_PRO -> PartOfSpeech.ADJECTIVE
-        Grammem.COMPOSITE -> PartOfSpeech.OTHER
-        Grammem.CONJUNCTION -> PartOfSpeech.CONJUNCTION
-        Grammem.INTERJECTION -> PartOfSpeech.INTERJECTION
-        Grammem.NUMERAL -> PartOfSpeech.NUMERAL
-        Grammem.PARTICLE -> PartOfSpeech.PARTICLE
-        Grammem.PREPOSITION -> PartOfSpeech.OTHER
-        Grammem.NOUN -> PartOfSpeech.NOUN
-        Grammem.NOUN_PRO -> PartOfSpeech.NOUN
-        Grammem.VERB -> PartOfSpeech.VERB
+        StemGrammem.ADJECTIVE -> PartOfSpeech.ADJECTIVE
+        StemGrammem.ADVERB -> PartOfSpeech.ADVERB
+        StemGrammem.ADVERB_PRO -> PartOfSpeech.ADVERB
+        StemGrammem.ADJECTIVE_NUM -> PartOfSpeech.ADJECTIVE
+        StemGrammem.ADJECTIVE_PRO -> PartOfSpeech.ADJECTIVE
+        StemGrammem.COMPOSITE -> PartOfSpeech.OTHER
+        StemGrammem.CONJUNCTION -> PartOfSpeech.CONJUNCTION
+        StemGrammem.INTERJECTION -> PartOfSpeech.INTERJECTION
+        StemGrammem.NUMERAL -> PartOfSpeech.NUMERAL
+        StemGrammem.PARTICLE -> PartOfSpeech.PARTICLE
+        StemGrammem.PREPOSITION -> PartOfSpeech.OTHER
+        StemGrammem.NOUN -> PartOfSpeech.NOUN
+        StemGrammem.NOUN_PRO -> PartOfSpeech.NOUN
+        StemGrammem.VERB -> PartOfSpeech.VERB
         else -> PartOfSpeech.OTHER
 
+    }
+}
+
+fun Grammem.toCharacteristic(): Characteristic? {
+    return when (this) {
+        Grammem.PAST_TENSE -> Characteristic.PAST_TENSE
+        Grammem.MODAL -> Characteristic.IS_MODAL
+        Grammem.UNEXPECTED -> Characteristic.IS_SUDDENLY
+        else -> null
     }
 }

@@ -1,7 +1,5 @@
 package edu.slapoguzov.emodetect.relations.model.connl
 
-import edu.slapoguzov.emodetect.relations.ConnlReader
-
 data class ConnlRow(
         val id: String,
         val form: String,
@@ -12,7 +10,7 @@ data class ConnlRow(
         val dep: String?,
         val depType: String?,
         val head: String?,
-        val misc: String?
+        var misc: String?
 ) {
     fun toToken(): Token {
         val pos = this.cpostag ?: PartOfSpeach.OTHER.text
@@ -22,7 +20,8 @@ data class ConnlRow(
                 partOfSpeach = PartOfSpeach.of(pos)!!,
                 feats = this.feats,
                 position = this.id.toInt(),
-                dependencies = mutableListOf()
+                dependencies = mutableListOf(),
+                misc = misc
         )
     }
 

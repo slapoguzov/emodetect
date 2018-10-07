@@ -6,6 +6,7 @@ enum class Characteristic {
     FUTURE_TENESE,
     IS_ADV,
     IS_SUDDENLY,
+    IS_MODAL,
 
     IS_AGENT,
     IS_ACTION,

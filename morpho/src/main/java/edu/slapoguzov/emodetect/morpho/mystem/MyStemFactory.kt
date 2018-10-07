@@ -1,7 +1,6 @@
 package edu.slapoguzov.emodetect.morpho.mystem
 
 import edu.slapoguzov.emodetect.core.getPathToResource
-import edu.slapoguzov.emodetect.sentence.mystem.MyStemWrapper
 import ru.stachek66.nlp.mystem.holding.Factory
 import scala.Option
 import java.io.File

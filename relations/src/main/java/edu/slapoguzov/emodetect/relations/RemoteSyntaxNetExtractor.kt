@@ -1,5 +1,7 @@
 package edu.slapoguzov.emodetect.relations
 
+import edu.slapoguzov.emodetect.morpho.AdditionalMorphoDictionary
+import edu.slapoguzov.emodetect.morpho.MorphoProcessor
 import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
 import edu.slapoguzov.emodetect.relations.model.connl.ConnlSentence
 import java.io.BufferedReader
@@ -14,8 +16,8 @@ class RemoteSyntaxNetExtractor(
 ) : RelationsExtractor {
 
     private val myStem = MyStemFactory().getMyStem()
-
-    private val morphoProcessor = MorphoProcessor(myStem)
+    private val additionalMorphoDictionary = AdditionalMorphoDictionary()
+    private val morphoProcessor = MorphoProcessor(myStem, additionalMorphoDictionary)
     private val connlReader = ConnlReader()
     private var socket = Socket(host, port)
 

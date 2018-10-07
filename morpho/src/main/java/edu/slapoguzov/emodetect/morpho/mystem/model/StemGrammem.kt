@@ -1,6 +1,6 @@
-package edu.slapoguzov.emodetect.sentence.mystem.model
+package edu.slapoguzov.emodetect.morpho.mystem.model
 
-enum class Grammem(val text: String) {
+enum class StemGrammem(val text: String) {
     ADJECTIVE("A"),
     ADVERB("ADV"),
     ADVERB_PRO("ADVPRO"),
@@ -38,8 +38,10 @@ enum class Grammem(val text: String) {
 
         val partsOfSpeach = listOf(ADJECTIVE, ADVERB, ADVERB_PRO, ADJECTIVE_NUM, ADJECTIVE_PRO, COMPOSITE, CONJUNCTION, INTERJECTION, NUMERAL, PARTICLE, PREPOSITION, NOUN, NOUN_PRO, VERB)
 
-        fun fromText(text: String): Grammem? {
-            return Grammem.values().find { Regex("${it.text}(=.*)?").matches(text) }
+        val tenses = listOf(PAST_TENSE, PRESENT_TENSE, NON_PAST_TENSE)
+
+        fun fromText(text: String): StemGrammem? {
+            return StemGrammem.values().find { Regex("${it.text}(=.*)?").matches(text) }
         }
     }
 }

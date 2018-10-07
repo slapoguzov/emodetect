@@ -1,8 +1,8 @@
-package edu.slapoguzov.emodetect.sentence.mystem
+package edu.slapoguzov.emodetect.morpho.mystem
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import edu.slapoguzov.emodetect.sentence.mystem.model.Grammem
-import edu.slapoguzov.emodetect.sentence.mystem.model.StemUnit
+import edu.slapoguzov.emodetect.morpho.mystem.model.StemGrammem
+import edu.slapoguzov.emodetect.morpho.mystem.model.StemUnit
 import ru.stachek66.nlp.mystem.holding.MyStem
 import ru.stachek66.nlp.mystem.holding.Request
 import ru.stachek66.nlp.mystem.model.Info
@@ -25,7 +25,7 @@ class MyStemWrapper(private val myStem: MyStem) {
         val rawResponse = mapper.readValue(this.rawResponse(), Map::class.java) as Map<String, List<Map<String, String>>>
         val grammes = rawResponse.get("analysis")?.firstOrNull()?.get("gr")
                 ?.split(",")
-                ?.mapNotNull { Grammem.fromText(it) }
+                ?.mapNotNull { StemGrammem.fromText(it) }
                 .orEmpty()
         return StemUnit(
                 this.lex().get(),
