@@ -15,6 +15,9 @@
         <module>relations</module>
         <module>core</module>
         <module>statistics</module>
+        <module>cognitive-variables-engine</module>
+        <module>textr-adapter</module>
+        <module>text-adapter</module>
     </modules>
 
     <properties>
@@ -37,6 +40,21 @@
             <dependency>
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>core</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>occ</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>cognitive-variables-engine</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>edu.slapoguzov.emodetect</groupId>
+                <artifactId>sentence</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>

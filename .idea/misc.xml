@@ -9,6 +9,7 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/sense-net-api/pom.xml" />
+        <option value="$PROJECT_DIR$/textr-adapter/pom.xml" />
       </set>
     </option>
   </component>
