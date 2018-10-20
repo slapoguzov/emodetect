@@ -19,6 +19,10 @@ class DefaultCognitiveVariablesDetector : CognitiveVariablesDetector {
             DirectionOfEmotionDetector(),
             EffortOfActionDetector(),
             EventDeservingnessDetector(),
-            EventFamiliarityDetector(statisticsComponent)
+            EventFamiliarityDetector(statisticsComponent),
+            ExpectedDeviationDetector(statisticsComponent),
+            ObjectAppealingDetector(),
+            OtherPresumptionDetector(),
+            ProspectDetector(statisticsComponent)
     )
 }
