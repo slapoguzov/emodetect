@@ -4,6 +4,7 @@ import edu.slapoguzov.emodetect.morpho.model.Grammem
 import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach as ConnlPartOfSpeach
 import edu.slapoguzov.emodetect.sentence.model.PartOfSpeech
 import edu.slapoguzov.emodetect.morpho.mystem.model.StemGrammem
+import edu.slapoguzov.emodetect.relations.model.connl.Feats
 import edu.slapoguzov.emodetect.sentence.model.Characteristic
 
 fun ConnlPartOfSpeach.toPartOfSpeach(): PartOfSpeech {
@@ -51,11 +52,13 @@ fun StemGrammem.toPartOfSpeach(): PartOfSpeech {
     }
 }
 
-fun Grammem.toCharacteristic(): Characteristic? {
+fun Feats.toCharacteristic(): Characteristic? {
     return when (this) {
-        Grammem.PAST_TENSE -> Characteristic.PAST_TENSE
-        Grammem.MODAL -> Characteristic.IS_MODAL
-        Grammem.UNEXPECTED -> Characteristic.IS_SUDDENLY
+        Feats.PAST_TENSE -> Characteristic.PAST_TENSE
+        Feats.MODAL -> Characteristic.IS_MODAL
+        Feats.UNEXPECTED -> Characteristic.IS_SUDDENLY
+        Feats.ANIMATE -> Characteristic.ANIMATE
+        Feats.INANIMATE -> Characteristic.INANIMATE
         else -> null
     }
 }

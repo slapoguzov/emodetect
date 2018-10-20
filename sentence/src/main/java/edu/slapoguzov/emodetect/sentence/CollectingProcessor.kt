@@ -19,16 +19,8 @@ class CollectingProcessor(
         val allWords = mutableListOf<Word>() // TODO: не факт, что хорошее решение
         connlSentence.allRelations.forEach {
             val relationChars = relationProcessor.process(RelationProcessorParameters(it))
-            val srcOtherMorphoChars = it.src.misc
-                    ?.split(",")
-                    ?.filter { it.isNotEmpty() }
-                    ?.mapNotNull { Grammem.valueOf(it).toCharacteristic() }
-                    .orEmpty()
-            val targetOtherMorphoChars = it.target.misc
-                    ?.split(",")
-                    ?.filter { it.isNotEmpty() }
-                    ?.mapNotNull { Grammem.valueOf(it).toCharacteristic() }
-                    .orEmpty()
+            val srcOtherMorphoChars = it.src.feats.mapNotNull { it.toCharacteristic() }
+            val targetOtherMorphoChars = it.target.feats.mapNotNull { it.toCharacteristic() }
             val srcAllChars = relationChars.srcCharacteristics + srcOtherMorphoChars
             val targetAllChars = relationChars.targetCharacteristics + targetOtherMorphoChars
             val src = buildWord(it.src, srcAllChars)

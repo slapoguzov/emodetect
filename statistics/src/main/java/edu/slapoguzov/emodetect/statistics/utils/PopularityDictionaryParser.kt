@@ -14,8 +14,12 @@ object PopularityDictionaryParser : KLogging() {
     fun parse() {
         val path = this.javaClass.getPathToResource("texts/linis-crowd-short.csv")
         val lines = File(path).readLines()
+        val sentences = lines
+                .flatMap { it.split(Regex("[ ]*\\.[ ]*")) }
+                .filter { it.length > 20 }
+                .drop(10)
         val words = mutableMapOf<String, WordPopularity>()
-        lines.forEachIndexed { i, it ->
+        sentences.forEachIndexed { i, it ->
             logger.info { "parse text $i" }
             words.merge(wordPopularityExtractor.extractWordPopularities(it))
         }

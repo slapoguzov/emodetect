@@ -4,5 +4,5 @@ import edu.slapoguzov.emodetect.occ.model.variables.CognitiveVariable
 import edu.slapoguzov.emodetect.sentence.model.Sentence
 
 interface VariableDetector<T : CognitiveVariable> {
-    fun detect(sentence: Sentence): T
+    fun detect(sentence: Sentence): T?
 }

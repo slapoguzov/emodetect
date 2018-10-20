@@ -6,19 +6,23 @@ data class ConnlRow(
         var lemma: String?,
         val cpostag: String?,
         var postag: String?,
-        val feats: String?,
+        var feats: String?,
         val dep: String?,
         val depType: String?,
         val head: String?,
-        var misc: String?
+        val misc: String?
 ) {
     fun toToken(): Token {
         val pos = this.cpostag ?: PartOfSpeach.OTHER.text
+        val parsedFeats = this.feats
+                ?.split("|")
+                .orEmpty()
+                .mapNotNull { str -> Feats.values().find { str.contains(it.token) } }
         return Token(
                 form = this.form,
                 lemma = this.lemma ?: this.form.toLemma(),
                 partOfSpeach = PartOfSpeach.of(pos)!!,
-                feats = this.feats,
+                feats = parsedFeats,
                 position = this.id.toInt(),
                 dependencies = mutableListOf(),
                 misc = misc

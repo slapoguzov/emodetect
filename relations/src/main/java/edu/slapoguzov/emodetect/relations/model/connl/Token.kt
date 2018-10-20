@@ -4,7 +4,7 @@ data class Token(
         val form: String,
         val lemma: String,
         val partOfSpeach: PartOfSpeach,
-        val feats: String?,
+        val feats: List<Feats> = emptyList(),
         val position: Int,
         val dependencies: MutableList<Dependency>,
         val misc: String? = null

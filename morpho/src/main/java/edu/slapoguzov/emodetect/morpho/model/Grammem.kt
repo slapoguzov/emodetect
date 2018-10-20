@@ -5,6 +5,9 @@ enum class Grammem {
     PRESENT_TENSE,
     NON_PAST_TENSE,
 
+    ANIMATE,
+    INANIMATE,
+
     MODAL,
 
     UNEXPECTED

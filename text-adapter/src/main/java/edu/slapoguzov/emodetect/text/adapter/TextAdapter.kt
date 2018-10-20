@@ -8,6 +8,7 @@ import edu.slapoguzov.emodetect.sentence.Application
 import edu.slapoguzov.emodetect.sentence.CollectingProcessor
 import edu.slapoguzov.emodetect.sentence.RelationProcessor
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
+import mu.KLogging
 
 class TextAdapter {
 
@@ -22,8 +23,13 @@ class TextAdapter {
 
 
     fun detectEmotions(text: String): Set<EmotionType> {
+        logger.info { "source text: $text" }
         val sentence = collectingProcessor.process(text)
+        logger.info { "sentence: $sentence" }
         val cognitiveVariables = cognitiveVariablesDetector.detect(sentence)
+        logger.info { "cognitiveVariables: $cognitiveVariables" }
         return emotionsDetector.detect(cognitiveVariables)
     }
+
+    private companion object : KLogging()
 }

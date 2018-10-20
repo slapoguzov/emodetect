@@ -11,5 +11,10 @@ enum class Characteristic {
     IS_AGENT,
     IS_ACTION,
     IS_SUBJECT,
-    IS_OBJECT
+    IS_OBJECT,
+
+    ANIMATE,
+    INANIMATE,
+
+    EFFORT_ACTION
 }
