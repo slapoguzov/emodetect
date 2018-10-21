@@ -5,7 +5,7 @@ object Application {
 
     fun run() {
         //val text = "Внезапно Маша смогла поздравить Ивана с выигрышем . "
-        val text = "Внезапно она обнаружила его пьяным . "
+        val text = "Иван не получил зарплату . "
         val emotions = textAdapter.detectEmotions(text)
         println(emotions)
     }

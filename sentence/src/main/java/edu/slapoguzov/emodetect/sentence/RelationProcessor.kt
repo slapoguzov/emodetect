@@ -15,10 +15,16 @@ class RelationProcessor {
             NOMINAL_SUBJECT -> processNominalSubjectRelation()
             ADVERBIAL_MODIFIER -> processAdverbialModifierRelation(parameters)
             NOMINAL_MODIFIER, OBJECT -> processObjectRelation(parameters)
-
+            OTHER -> processOtherRelation(parameters)
             else -> emptyList<Characteristic>() to emptyList()
         }
         return RelationProcessorResult(srcChars, targetChars)
+    }
+
+    private fun processOtherRelation(parameters: RelationProcessorParameters): Pair<List<Characteristic>, List<Characteristic>> {
+        if (parameters.src.partOfSpeach == PartOfSpeach.VERB && parameters.target.lemma == "не")
+            return listOf(Characteristic.NEGATION) to emptyList()
+        return emptyList<Characteristic>() to emptyList()
     }
 
     private fun processObjectRelation(parameters: RelationProcessorParameters): Pair<List<Characteristic>, List<Characteristic>> {

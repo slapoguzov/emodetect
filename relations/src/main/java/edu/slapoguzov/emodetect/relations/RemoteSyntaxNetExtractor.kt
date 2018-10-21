@@ -9,6 +9,7 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.Socket
 import java.net.SocketException
+import kotlin.math.log
 
 
 class RemoteSyntaxNetExtractor(
@@ -43,8 +44,8 @@ class RemoteSyntaxNetExtractor(
             val connlText = input.readText()
             val connlRows = connlReader.readSourceLines(connlText)
             ConnlEnricher.enrich(connlRows, morphoUnits)
+            logger.info { "\n" + connlRows.joinToString("\n") }
             val connlSentence = connlReader.read(connlRows)
-            logger.info { "connlSentence: $connlSentence" }
             return connlSentence
         } catch (e: SocketException) {
             socket.close()

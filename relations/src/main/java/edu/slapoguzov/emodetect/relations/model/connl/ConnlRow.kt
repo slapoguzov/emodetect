@@ -33,7 +33,14 @@ data class ConnlRow(
         return this.replace(NON_ALPHABETIC, "").toLowerCase()
     }
 
+    override fun toString(): String {
+        return listOf(id, form, lemma, cpostag, postag, feats, dep, depType, head, misc)
+                .joinToString("\t") { if (it == null) "_" else it }
+    }
+
     companion object {
         private val NON_ALPHABETIC = Regex("\\P{L}")
     }
+
+
 }

@@ -27,7 +27,6 @@ class TextAdapter {
         val sentence = collectingProcessor.process(text)
         logger.info { "sentence: $sentence" }
         val cognitiveVariables = cognitiveVariablesDetector.detect(sentence)
-        logger.info { "cognitiveVariables: $cognitiveVariables" }
         return emotionsDetector.detect(cognitiveVariables)
     }
 

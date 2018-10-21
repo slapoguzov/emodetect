@@ -16,5 +16,7 @@ enum class Characteristic {
     ANIMATE,
     INANIMATE,
 
-    EFFORT_ACTION
+    EFFORT_ACTION,
+
+    NEGATION
 }
