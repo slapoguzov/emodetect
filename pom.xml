@@ -16,7 +16,6 @@
         <module>core</module>
         <module>statistics</module>
         <module>cognitive-variables-engine</module>
-        <module>textr-adapter</module>
         <module>text-adapter</module>
     </modules>
 
@@ -26,7 +25,7 @@
         <klogging.version>1.5.4</klogging.version>
         <slf4j.version>1.7.25</slf4j.version>
         <mystem.version>0.1.4</mystem.version>
-        <jackson.version>2.9.0</jackson.version>
+        <jackson.version>2.9.6</jackson.version>
         <opencsv.version>4.2</opencsv.version>
     </properties>
 
