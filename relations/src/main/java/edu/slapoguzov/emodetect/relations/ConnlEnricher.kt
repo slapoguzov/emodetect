@@ -16,6 +16,10 @@ object ConnlEnricher {
                     ?.mapNotNull { it.toFeat() }
                     ?.filter { !currentFeats.contains(it.token) }
                     .orEmpty()
+
+            morphoUnit?.grammems
+
+
             if (newFeats.isEmpty()) return@forEach
             val strNewFeats = newFeats.joinToString("|") { it.token }
             if (currentFeats.isEmpty()) row.feats = strNewFeats

@@ -13,7 +13,7 @@ import kotlin.math.log
 
 
 class RemoteSyntaxNetExtractor(
-        private val host: String = "localhost",
+        private val host: String = "195.201.42.18",
         private val port: Int = 8111
 ) : RelationsExtractor {
 
