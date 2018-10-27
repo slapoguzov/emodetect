@@ -24,8 +24,11 @@ class ValenceDictionary() {
     }
 
     fun getValence(words: List<String>): Double {
-        val total = words.sumByDouble { dictionary[it]?.valence ?: 0.0 }
-        return total / words.size
+        val valencedWords = words
+                .mapNotNull { dictionary[it]?.valence }
+                .filter { it != 0.0 }
+        if (valencedWords.isEmpty()) return 0.0
+        return valencedWords.average()
     }
 
     fun getCountPositiveSense(word: String): Int {

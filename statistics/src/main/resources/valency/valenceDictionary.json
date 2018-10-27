@@ -10757,6 +10757,12 @@
   "numberNegativeSenses" : 0,
   "numberNeutralSenses" : 1
 }, {
+  "token" : "находить",
+  "valence" : 0.5,
+  "numberPositiveSenses" : 1,
+  "numberNegativeSenses" : 0,
+  "numberNeutralSenses" : 1
+}, {
   "token" : "находиться",
   "valence" : 0.0,
   "numberPositiveSenses" : 0,
@@ -15558,9 +15564,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "потерять",
-  "valence" : 0.0,
+  "valence" : -0.66666666666666,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 1
 }, {
   "token" : "потихоньку",
@@ -16854,9 +16860,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "пропускать",
-  "valence" : 0.0,
+  "valence" : -0.5,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 1,
   "numberNeutralSenses" : 1
 }, {
   "token" : "прорабатывать",
