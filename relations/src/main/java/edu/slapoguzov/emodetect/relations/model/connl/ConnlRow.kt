@@ -34,8 +34,28 @@ data class ConnlRow(
     }
 
     override fun toString(): String {
-        return listOf(id, form, lemma, cpostag, postag, feats, dep, depType, head, misc)
-                .joinToString("\t") { if (it == null) "_" else it }
+        return listOf(
+                id,
+                form,
+                lemma,
+                cpostag,
+                postag?.toConnlUFormat(),
+                feats?.toConnlUFormat(),
+                dep,
+                depType,
+                head,
+                misc
+        ).joinToString("\t") { if (it == null) "_" else it }
+    }
+
+    private fun String.toConnlUFormat(): String {
+        return this
+                .replace("+", "")
+                .replace("fPOS=", "POS=")
+                .replace(Regex("PUNCT[^ ^\t]?"), "PUNCT")
+                .split("|")
+                .sortedBy { it.toLowerCase() }
+                .joinToString("|")
     }
 
     companion object {

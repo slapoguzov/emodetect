@@ -12,7 +12,7 @@ class DefaultCognitiveVariablesDetector : CognitiveVariablesDetector {
 
     override fun detect(sentence: Sentence): Set<CognitiveVariable> {
         val variables = detectors.mapNotNull { it.detect(sentence) }.toSet()
-        val state = variables.joinToString("\n") { "${it.javaClass.simpleName}=$it" }
+        val state = variables.joinToString("\n") { "${it.javaClass.simpleName} = $it" }
         logger.info { "cognitiveVariables: \n$state" }
         return variables
     }
