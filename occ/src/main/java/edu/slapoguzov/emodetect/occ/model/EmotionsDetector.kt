@@ -16,6 +16,6 @@ class EmotionsDetector {
         logger.info { "redundant emotionTypes: $emotionTypes" }
         val clearEmotionTypes = collapseProcessor.process(emotionTypes)
         logger.info { "clear emotionTypes: $clearEmotionTypes" }
-        return emotionTypes
+        return clearEmotionTypes
     }
 }

@@ -8,9 +8,11 @@ import edu.slapoguzov.emodetect.sentence.model.Sentence
 
 class SelfPresumptionDetector : VariableDetector<SelfPresumption> {
     override fun detect(sentence: Sentence): SelfPresumption? {
-        val action = sentence.allWords.find { it.characteristics.contains(Characteristic.IS_ACTION) }
-                ?: return null
-        if (action.valence > 0.0) return SelfPresumption.DESIRABLE
+        val action = sentence.allWords.find {
+            it.characteristics.contains(Characteristic.IS_ACTION) &&
+                    !it.characteristics.contains(Characteristic.IS_MODAL)
+        } ?: return null
+        if (action.valence >= 0.0) return SelfPresumption.DESIRABLE
         if (action.valence < -0.0) return SelfPresumption.UNDESIRABLE
         return null
     }

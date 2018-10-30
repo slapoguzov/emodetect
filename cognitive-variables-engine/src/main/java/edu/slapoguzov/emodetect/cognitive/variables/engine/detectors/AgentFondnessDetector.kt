@@ -8,7 +8,7 @@ class AgentFondnessDetector : VariableDetector<AgentFondness> {
     override fun detect(sentence: Sentence): AgentFondness {
         val positiveAgents = sentence.allWords.filter {
             it.characteristics.contains(Characteristic.IS_AGENT)
-                    && it.valence > 0
+                    && it.valence >= 0
         }
 
         if (positiveAgents.isNotEmpty()) return AgentFondness.LIKED

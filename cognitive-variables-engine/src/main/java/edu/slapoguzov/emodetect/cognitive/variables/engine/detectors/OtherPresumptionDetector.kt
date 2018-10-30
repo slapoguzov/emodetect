@@ -10,9 +10,9 @@ class OtherPresumptionDetector : VariableDetector<OtherPresumption> {
         val action = sentence.allWords.find { it.characteristics.contains(Characteristic.IS_ACTION) }
         if (agent == null || action == null) return null
         if (action.valence >= 0.0 && agent.valence >= 0.0) return OtherPresumption.DESIRABLE
-        if (action.valence <= 0.0 && agent.valence <= 0.0) return OtherPresumption.DESIRABLE
-        if (action.valence > 0.0 && agent.valence < 0.0) return OtherPresumption.UNDESIRABLE
-        if (action.valence < 0.0 && agent.valence > 0.0) return OtherPresumption.UNDESIRABLE
+        if (action.valence < 0.0 && agent.valence < 0.0) return OtherPresumption.DESIRABLE
+        if (action.valence >= 0.0 && agent.valence < 0.0) return OtherPresumption.UNDESIRABLE
+        if (action.valence < 0.0 && agent.valence >= 0.0) return OtherPresumption.UNDESIRABLE
         return OtherPresumption.DESIRABLE
     }
 }

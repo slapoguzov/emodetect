@@ -9,9 +9,11 @@ import edu.slapoguzov.emodetect.sentence.model.Sentence
 
 class SelfReactionDetector : VariableDetector<SelfReaction> {
     override fun detect(sentence: Sentence): SelfReaction? {
-        val action = sentence.allWords.find { it.characteristics.contains(Characteristic.IS_ACTION) }
-                ?: return null
-        if (action.valence > 0.0) return SelfReaction.PLEASED
+        val action = sentence.allWords.find {
+            it.characteristics.contains(Characteristic.IS_ACTION) &&
+                    !it.characteristics.contains(Characteristic.IS_MODAL)
+        } ?: return null
+        if (action.valence >= 0.0) return SelfReaction.PLEASED
         if (action.valence < -0.0) return SelfReaction.DISPLEASED
         return null
     }

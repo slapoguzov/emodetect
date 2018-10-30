@@ -24,8 +24,8 @@ enum class EmotionType(
             cognitiveVariables = setOf(
                     ValencedReaction.TRUE,
                     SelfReaction.DISPLEASED,
-                    SelfPresumption.UNDESIRABLE,
-                    DirectionOfEmotion.SELF
+                    SelfPresumption.UNDESIRABLE
+                    //TODO: DirectionOfEmotion.SELF
             )
     ),
     SORRY_FOR(

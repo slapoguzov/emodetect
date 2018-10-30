@@ -17,13 +17,19 @@ object ConnlEnricher {
                     ?.filter { !currentFeats.contains(it.token) }
                     .orEmpty()
 
-            morphoUnit?.grammems
-
+            //override modal
+            val isMorphoUnitContainModal = morphoUnit?.grammems?.any { it == MODAL } ?: false
+            val isCurrentContainModal = row.feats?.contains(Feats.MODAL.token) ?: false
+            if(isCurrentContainModal && !isMorphoUnitContainModal) {
+                row.feats = row.feats?.replace(Regex("Mood=.*?\\|"), "")
+            }
 
             if (newFeats.isEmpty()) return@forEach
             val strNewFeats = newFeats.joinToString("|") { it.token }
+
             if (currentFeats.isEmpty()) row.feats = strNewFeats
             else row.feats = "$currentFeats|$strNewFeats"
+
         }
         return rows
     }

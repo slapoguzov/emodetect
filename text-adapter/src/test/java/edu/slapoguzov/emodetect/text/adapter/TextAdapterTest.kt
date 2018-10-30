@@ -22,7 +22,7 @@ class TextAdapterTest {
     @Test
     fun `Он может пропустить рейс`() {
         val text = "Он может пропустить рейс"
-        val expectedEmotions = listOf(DISTRESS, FEAR, SHAME)
+        val expectedEmotions = listOf(FEAR, REMORSE)
         val actualEmotions = textAdapter.detectEmotions(text)
         assertEquals(expectedEmotions, actualEmotions)
     }
@@ -30,7 +30,7 @@ class TextAdapterTest {
     @Test
     fun `Внезапно я нашел его в самолете`() {
         val text = "Внезапно я нашел его в самолете"
-        val expectedEmotions = listOf(JOY, HAPPY_FOR, SATISFACTION, ADMIRATION)
+        val expectedEmotions = listOf(HAPPY_FOR, SATISFACTION, GRATITUDE)
         val actualEmotions = textAdapter.detectEmotions(text)
         assertEquals(expectedEmotions, actualEmotions)
     }

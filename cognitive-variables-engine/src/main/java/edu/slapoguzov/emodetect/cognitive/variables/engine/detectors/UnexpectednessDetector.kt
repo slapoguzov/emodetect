@@ -6,7 +6,8 @@ import edu.slapoguzov.emodetect.sentence.model.Sentence
 
 class UnexpectednessDetector : VariableDetector<Unexpectedness> {
     override fun detect(sentence: Sentence): Unexpectedness? {
-        sentence.allWords.find { it.characteristics.contains(Characteristic.IS_SUDDENLY) } ?: Unexpectedness.FALSE
+        sentence.allWords.find { it.characteristics.contains(Characteristic.IS_SUDDENLY) }
+                ?: return Unexpectedness.FALSE
         return Unexpectedness.TRUE
     }
 }
