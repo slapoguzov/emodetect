@@ -1,10 +1,9 @@
-package edu.slapoguzov.emodetect.text.adapter
+package edu.slapoguzov.emodetect.backend
 
 object Application {
-    private val textAdapter = TextAdapter()
+    private val textAdapter = EmotionService()
 
     fun run() {
-        //val text = "Внезапно Маша смогла поздравить Ивана с выигрышем . "
         val text = "Иван не получил зарплату . "
         val emotions = textAdapter.detectEmotions(text)
         println(emotions)

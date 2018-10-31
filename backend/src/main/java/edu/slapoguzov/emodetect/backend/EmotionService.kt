@@ -1,4 +1,4 @@
-package edu.slapoguzov.emodetect.text.adapter
+package edu.slapoguzov.emodetect.backend
 
 import edu.slapoguzov.emodetect.cognitive.variables.engine.DefaultCognitiveVariablesDetector
 import edu.slapoguzov.emodetect.occ.model.EmotionsDetector
@@ -10,7 +10,7 @@ import edu.slapoguzov.emodetect.sentence.RelationProcessor
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 import mu.KLogging
 
-class TextAdapter {
+class EmotionService {
 
     private val relationExtractor = RemoteSyntaxNetExtractor()
 

@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>text-adapter</artifactId>
+    <artifactId>backend</artifactId>
 
     <dependencies>
         <dependency>
@@ -26,7 +26,7 @@
         </dependency>
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
-            <artifactId>cognitive-variables-engine</artifactId>
+            <artifactId>cognitive-variables</artifactId>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>

@@ -15,8 +15,8 @@
         <module>relations</module>
         <module>core</module>
         <module>statistics</module>
-        <module>cognitive-variables-engine</module>
-        <module>text-adapter</module>
+        <module>cognitive-variables</module>
+        <module>backend</module>
     </modules>
 
     <properties>
@@ -48,7 +48,7 @@
             </dependency>
             <dependency>
                 <groupId>edu.slapoguzov.emodetect</groupId>
-                <artifactId>cognitive-variables-engine</artifactId>
+                <artifactId>cognitive-variables</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
