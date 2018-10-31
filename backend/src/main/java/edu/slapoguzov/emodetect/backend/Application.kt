@@ -1,16 +1,16 @@
 package edu.slapoguzov.emodetect.backend
 
-object Application {
-    private val textAdapter = EmotionService()
+import edu.slapoguzov.emodetect.backend.service.EmotionService
+import io.micronaut.runtime.Micronaut
 
-    fun run() {
-        val text = "Иван не получил зарплату . "
-        val emotions = textAdapter.detectEmotions(text)
-        println(emotions)
+object Application {
+    @JvmStatic
+    fun main(args: Array<String>) {
+        Micronaut.build()
+                .packages("edu.slapoguzov.emodetect.backend")
+                .mainClass(Application.javaClass)
+                .start()
     }
 }
 
-fun main(args: Array<String>) {
-    Application.run()
-}
 

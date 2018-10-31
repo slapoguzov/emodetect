@@ -1,14 +1,15 @@
 package edu.slapoguzov.emodetect.backend
 
+import edu.slapoguzov.emodetect.backend.service.EmotionService
 import edu.slapoguzov.emodetect.occ.model.emotions.EmotionType.*
 import org.junit.Assert.assertEquals
 import org.junit.Ignore
 import org.junit.Test
 
 @Ignore
-class TextAdapterTest {
+class EmotionServiceTest {
 
-    val emotionService = EmotionService()
+    private val emotionService = EmotionService()
 
     @Test
     fun `Я потерял Ивана несколько часов назад`() {

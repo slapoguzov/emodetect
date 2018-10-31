@@ -1,4 +1,4 @@
-package edu.slapoguzov.emodetect.backend
+package edu.slapoguzov.emodetect.backend.service
 
 import edu.slapoguzov.emodetect.cognitive.variables.engine.DefaultCognitiveVariablesDetector
 import edu.slapoguzov.emodetect.occ.model.EmotionsDetector
@@ -9,7 +9,9 @@ import edu.slapoguzov.emodetect.sentence.CollectingProcessor
 import edu.slapoguzov.emodetect.sentence.RelationProcessor
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 import mu.KLogging
+import javax.inject.Singleton
 
+@Singleton
 class EmotionService {
 
     private val relationExtractor = RemoteSyntaxNetExtractor()

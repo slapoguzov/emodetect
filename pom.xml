@@ -27,6 +27,7 @@
         <mystem.version>0.1.4</mystem.version>
         <jackson.version>2.9.6</jackson.version>
         <opencsv.version>4.2</opencsv.version>
+        <micronaut.version>1.0.0</micronaut.version>
     </properties>
 
     <dependencyManagement>
@@ -65,6 +66,13 @@
                 <groupId>edu.slapoguzov.emodetect</groupId>
                 <artifactId>morpho</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.micronaut</groupId>
+                <artifactId>micronaut-bom</artifactId>
+                <version>${micronaut.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>com.opencsv</groupId>
@@ -137,6 +145,32 @@
                 <version>${kotlin.version}</version>
 
                 <executions>
+
+                    <execution>
+                        <id>kapt</id>
+                        <goals>
+                            <goal>kapt</goal>
+                        </goals>
+                        <configuration>
+                            <sourceDirs>
+                                <sourceDir>src/main/kotlin</sourceDir>
+                                <sourceDir>src/main/java</sourceDir>
+                            </sourceDirs>
+                            <annotationProcessorPaths>
+                                <annotationProcessorPath>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-inject-java</artifactId>
+                                    <version>${micronaut.version}</version>
+                                </annotationProcessorPath>
+                                <annotationProcessorPath>
+                                    <groupId>io.micronaut</groupId>
+                                    <artifactId>micronaut-validation</artifactId>
+                                    <version>${micronaut.version}</version>
+                                </annotationProcessorPath>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </execution>
+
                     <execution>
                         <id>compile</id>
                         <phase>compile</phase>
