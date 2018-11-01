@@ -25530,9 +25530,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "бандит",
-  "valence" : 0.0,
+  "valence" : -0.5,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 1,
   "numberNeutralSenses" : 1
 }, {
   "token" : "бандитизм",
@@ -97062,9 +97062,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "убивать",
-  "valence" : 0.0,
+  "valence" : -0.66666666,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 1
 }, {
   "token" : "убиваться",
@@ -97134,9 +97134,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "убить",
-  "valence" : 0.0,
+  "valence" : -0.666666666,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 1
 }, {
   "token" : "убиться",

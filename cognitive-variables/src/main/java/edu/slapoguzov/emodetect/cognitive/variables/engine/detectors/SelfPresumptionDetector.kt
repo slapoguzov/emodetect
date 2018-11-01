@@ -12,6 +12,7 @@ class SelfPresumptionDetector : VariableDetector<SelfPresumption> {
             it.characteristics.contains(Characteristic.IS_ACTION) &&
                     !it.characteristics.contains(Characteristic.IS_MODAL)
         } ?: return null
+        //TODO: так не всегда, только для некоторых действий(любить, ненавидеть, бояться)
         if (action.valence >= 0.0) return SelfPresumption.DESIRABLE
         if (action.valence < -0.0) return SelfPresumption.UNDESIRABLE
         return null

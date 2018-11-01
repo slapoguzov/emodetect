@@ -34,4 +34,12 @@ class EmotionServiceTest {
         val actualEmotions = emotionService.detectEmotions(text)
         assertEquals(expectedEmotions, actualEmotions)
     }
+
+    @Test
+    fun `Он скоро победит болезнь`() {
+        val text = "Он скоро победит болезнь"
+        val expectedEmotions = listOf(HAPPY_FOR, HOPE, GRATITUDE)
+        val actualEmotions = emotionService.detectEmotions(text)
+        assertEquals(expectedEmotions, actualEmotions)
+    }
 }

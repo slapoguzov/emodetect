@@ -5,7 +5,7 @@ import edu.slapoguzov.emodetect.sentence.model.Sentence
 
 class ValencedReactionDetector : VariableDetector<ValencedReaction> {
     override fun detect(sentence: Sentence): ValencedReaction? {
-        if (sentence.valence > 0.05 || sentence.valence < -0.05) return ValencedReaction.TRUE
+        if (sentence.allWords.any { it.valence != 0.0 }) return ValencedReaction.TRUE
         return ValencedReaction.FALSE
     }
 }

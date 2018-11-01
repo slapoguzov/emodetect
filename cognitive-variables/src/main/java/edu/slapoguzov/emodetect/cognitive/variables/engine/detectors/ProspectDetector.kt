@@ -14,6 +14,6 @@ class ProspectDetector(private val statisticsComponent: StatisticsComponent) : V
 
         if (countPositiveSense > countNegativeSense) return Prospect.POSITIVE
         if (countPositiveSense < countNegativeSense) return Prospect.NEGATIVE
-        return Prospect.NEGATIVE
+        return Prospect.NEUTRAL
     }
 }
