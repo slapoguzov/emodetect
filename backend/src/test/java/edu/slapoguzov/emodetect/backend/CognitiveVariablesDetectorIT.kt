@@ -14,7 +14,6 @@ import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
-import kotlin.test.assertEquals
 
 @Ignore
 @RunWith(Parameterized::class)
@@ -35,7 +34,7 @@ class CognitiveVariablesDetectorIT(
         @Parameterized.Parameters(name = "{0}")
         fun data(): Collection<Array<out Any?>> {
             return listOf(
-                    /*arrayOf("Она любит страшные фильмы", setOf(SelfPresumption.DESIRABLE, SelfReaction.PLEASED)),
+                    arrayOf("Она любит страшные фильмы", setOf(SelfPresumption.DESIRABLE, SelfReaction.PLEASED)),
                     arrayOf("Гитлер убил тысячу невинных людей", setOf(SelfPresumption.UNDESIRABLE, SelfReaction.DISPLEASED)),
 
                     arrayOf("Преподавателя наградили премией", setOf(OtherPresumption.DESIRABLE)),
@@ -43,7 +42,7 @@ class CognitiveVariablesDetectorIT(
                     arrayOf("Бандит полюбил красавицу", setOf(OtherPresumption.UNDESIRABLE)),
 
                     arrayOf("Мария поздравила Колю с призом", setOf(DirectionOfEmotion.OTHER)),
-                    arrayOf("Павел выйграл миллион долларов", setOf(DirectionOfEmotion.SELF)),*/
+                    arrayOf("Павел выйграл миллион долларов", setOf(DirectionOfEmotion.SELF)),
 
                     arrayOf("Он победил болезнь", setOf(Prospect.POSITIVE)),
                     arrayOf("Человечество истребило миллионы животных", setOf(Prospect.NEGATIVE)),
