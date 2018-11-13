@@ -91,8 +91,8 @@ enum class EmotionType(
                     SelfReaction.DISPLEASED,
                     Prospect.NEGATIVE,
                     SelfPresumption.UNDESIRABLE,
-                    Status.CONFIRMED,
-                    DirectionOfEmotion.SELF
+                    Status.CONFIRMED
+                    //TODO: ,DirectionOfEmotion.SELF
             )
     ),
     RELIEF(

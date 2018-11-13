@@ -7,7 +7,8 @@ import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 
 class ProspectDetector(private val statisticsComponent: StatisticsComponent) : VariableDetector<Prospect> {
     override fun detect(sentence: Sentence): Prospect? {
-        val action = sentence.allWords.find { it.characteristics.contains(Characteristic.IS_ACTION) }
+        val action = sentence.allWords.find { it.characteristics.contains(Characteristic.IS_ACTION)
+            && !it.characteristics.contains(Characteristic.IS_MODAL)}
                 ?: return Prospect.NEUTRAL
         val countNegativeSense = statisticsComponent.getCountNegativeSense(action.lemma!!)
         val countPositiveSense = statisticsComponent.getCountPositiveSense(action.lemma!!)
