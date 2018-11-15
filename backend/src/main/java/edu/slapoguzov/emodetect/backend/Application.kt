@@ -1,6 +1,5 @@
 package edu.slapoguzov.emodetect.backend
 
-import edu.slapoguzov.emodetect.backend.service.EmotionService
 import io.micronaut.runtime.Micronaut
 
 object Application {

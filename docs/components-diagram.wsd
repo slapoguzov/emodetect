@@ -1,0 +1,84 @@
+@startuml
+
+database "dictionaries" {
+    ["morpho-dictionary"]
+    ["sentiment-dictionary"]
+    ["statistic-dictionary"]
+}
+note bottom of ["morpho-dictionary"]
+	Модальные глаголы ("мочь"...)
+	Токены неожиданности ("внезапно"...) 
+end note
+
+note bottom of ["sentiment-dictionary"]
+	Эмоциональные оценки 
+    для отдельных слов 
+end note
+
+note bottom of ["statistic-dictionary"]
+	Статистика популярность 
+    слов и словосочетаний
+end note
+
+node "syntax-net" {
+    [RemoteSyntaxNetExtractor]
+}
+note bottom of [RemoteSyntaxNetExtractor]
+    парсит зависимости между словами
+end note
+
+
+node "yandex-mystem" {
+    [MyStemWrapper]
+}
+note bottom of [MyStemWrapper]
+	дополнительная морфология
+end note
+
+package "sentence" {
+  [SentenceBuilder]
+  SentenceBuilder ..> ["morpho-dictionary"]
+  SentenceBuilder ..> ["sentiment-dictionary"]
+  SentenceBuilder ..> ["statistic-dictionary"]
+  SentenceBuilder ..> [RemoteSyntaxNetExtractor]
+  SentenceBuilder ..> [MyStemWrapper]
+}
+
+note left of [SentenceBuilder]
+	Обязанность компонента:
+    преобразовать исходный текст
+    в удобную структуру(Sentence)
+    и обогатить ее информацией
+    (морфология, хар-ки слов)
+end note
+
+package "cognitive-variables" {
+  [CognitiveVariablesDetector]
+}
+
+note bottom of [CognitiveVariablesDetector]
+	Обязанность компонента:
+    определить в структуре Sentence
+    наличие когнитивных переменных
+    по морфологии и другим хар-ка слов
+end note
+
+package "occ" {
+  [EmotionsDetector]
+}
+
+note bottom of [EmotionsDetector]
+	Обязанность компонента:
+    по когнитивным переменным
+    определить наличие эмоций
+end note
+
+package "backend" {
+  HTTP - [EmotionController]
+  EmotionController - [EmotionService]
+  EmotionService ..> SentenceBuilder
+  EmotionService ..> CognitiveVariablesDetector
+  EmotionService ..> EmotionsDetector
+}
+
+@enduml
