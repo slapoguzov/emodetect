@@ -6,18 +6,16 @@ database "dictionaries" {
     ["statistic-dictionary"]
 }
 note bottom of ["morpho-dictionary"]
-	Модальные глаголы ("мочь"...)
-	Токены неожиданности ("внезапно"...) 
+	Modal verbs
+	Unexpected tokens 
 end note
 
 note bottom of ["sentiment-dictionary"]
-	Эмоциональные оценки 
-    для отдельных слов 
+	Emotional scores for words
 end note
 
 note bottom of ["statistic-dictionary"]
-	Статистика популярность 
-    слов и словосочетаний
+	Statistic of popularity words
 end note
 
 node "syntax-net" {
