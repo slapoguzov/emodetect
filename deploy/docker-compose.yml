@@ -1,0 +1,14 @@
+version: '2'
+services:
+  syntaxnet:
+    image: inemo/syntaxnet_rus
+    ports:
+      - "8111:9999"
+    shm_size: 1024m
+    command: server 0.0.0.0 9999
+  emodetect-backend:
+    image: slapoguzov/emodetect
+    ports:
+      - "8080:8080"
+    depends_on:
+      - "syntaxnet"

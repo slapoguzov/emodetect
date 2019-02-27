@@ -14,7 +14,7 @@ import javax.inject.Singleton
 @Singleton
 class EmotionService {
 
-    private val relationExtractor = RemoteSyntaxNetExtractor()
+    private val relationExtractor = RemoteSyntaxNetExtractor("localhost")
 
     private val relationProcessor = RelationProcessor()
     private val statisticsComponent = StatisticsComponent()

@@ -11,6 +11,10 @@
 
     <artifactId>backend</artifactId>
 
+    <properties>
+        <jib.httpTimeout>100000</jib.httpTimeout>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
@@ -31,6 +35,10 @@
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
             <artifactId>statistics</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>edu.slapoguzov.emodetect</groupId>
+            <artifactId>morpho</artifactId>
         </dependency>
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
@@ -102,6 +110,19 @@
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <configuration>
+                    <to>
+                        <image>registry.hub.docker.com/slapoguzov/emodetect</image>
+                        <tags>
+                            <tag>latest</tag>
+                            <tag>${project.version}</tag>
+                        </tags>
+                    </to>
+                </configuration>
             </plugin>
         </plugins>
     </build>
