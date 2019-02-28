@@ -28,6 +28,8 @@
         <jackson.version>2.9.8</jackson.version>
         <opencsv.version>4.2</opencsv.version>
         <micronaut.version>1.0.4</micronaut.version>
+        <maven-assembly-plugin.version>2.6</maven-assembly-plugin.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -151,30 +153,6 @@
                     <version>${kotlin.version}</version>
                     <executions>
                         <execution>
-                            <id>kapt</id>
-                            <goals>
-                                <goal>kapt</goal>
-                            </goals>
-                            <configuration>
-                                <sourceDirs>
-                                    <sourceDir>src/main/kotlin</sourceDir>
-                                    <sourceDir>src/main/java</sourceDir>
-                                </sourceDirs>
-                                <annotationProcessorPaths>
-                                    <annotationProcessorPath>
-                                        <groupId>io.micronaut</groupId>
-                                        <artifactId>micronaut-inject-java</artifactId>
-                                        <version>${micronaut.version}</version>
-                                    </annotationProcessorPath>
-                                    <annotationProcessorPath>
-                                        <groupId>io.micronaut</groupId>
-                                        <artifactId>micronaut-validation</artifactId>
-                                        <version>${micronaut.version}</version>
-                                    </annotationProcessorPath>
-                                </annotationProcessorPaths>
-                            </configuration>
-                        </execution>
-                        <execution>
                             <id>compile</id>
                             <phase>compile</phase>
                             <goals>
@@ -189,6 +167,16 @@
                             </goals>
                         </execution>
                     </executions>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>${maven-assembly-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
