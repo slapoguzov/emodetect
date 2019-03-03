@@ -2,13 +2,11 @@ package edu.slapoguzov.emodetect.statistics.utils
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.opencsv.bean.CsvToBeanBuilder
-import edu.slapoguzov.emodetect.core.getPathToResource
 import edu.slapoguzov.emodetect.statistics.entity.LinisCrowdRow
 import edu.slapoguzov.emodetect.statistics.entity.RussentilexRow
 import edu.slapoguzov.emodetect.statistics.entity.Valence
 import edu.slapoguzov.emodetect.statistics.entity.ValencedWord
 import java.io.File
-import java.io.FileReader
 
 object ValencyDictionariesMerge {
 
@@ -34,8 +32,8 @@ object ValencyDictionariesMerge {
     }
 
     private fun readRusentilex(path: String): List<RussentilexRow> {
-        val pathToDictinary = this.javaClass.getPathToResource(path)
-        val russentilexRows = CsvToBeanBuilder<RussentilexRow>(FileReader(pathToDictinary))
+        val file = this.javaClass.getResourceAsStream(path).reader()
+        val russentilexRows = CsvToBeanBuilder<RussentilexRow>(file)
                 .withType(RussentilexRow::class.java)
                 .withIgnoreQuotations(true)
                 .build()
@@ -44,8 +42,8 @@ object ValencyDictionariesMerge {
     }
 
     private fun readLinisCrowd(path: String): List<LinisCrowdRow> {
-        val pathToDictinary = this.javaClass.getPathToResource(path)
-        val linisCrowdRows = CsvToBeanBuilder<LinisCrowdRow>(FileReader(pathToDictinary))
+        val reader =  this.javaClass.getResourceAsStream(path).reader()
+        val linisCrowdRows = CsvToBeanBuilder<LinisCrowdRow>(reader)
                 .withSeparator(';')
                 .withType(LinisCrowdRow::class.java)
                 .build()

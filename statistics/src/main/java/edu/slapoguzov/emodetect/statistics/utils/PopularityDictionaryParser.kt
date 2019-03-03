@@ -1,7 +1,7 @@
 package edu.slapoguzov.emodetect.statistics.utils
 
 import com.fasterxml.jackson.databind.ObjectMapper
-import edu.slapoguzov.emodetect.core.getPathToResource
+import edu.slapoguzov.emodetect.core.readResourceByLines
 import edu.slapoguzov.emodetect.statistics.entity.PopularityDictionary
 import edu.slapoguzov.emodetect.statistics.entity.WordPopularity
 import mu.KLogging
@@ -12,8 +12,7 @@ object PopularityDictionaryParser : KLogging() {
     private val mapper = ObjectMapper().writerWithDefaultPrettyPrinter()
 
     fun parse() {
-        val path = this.javaClass.getPathToResource("texts/linis-crowd-short.csv")
-        val lines = File(path).readLines()
+        val lines = this.javaClass.readResourceByLines("texts/linis-crowd-short.csv")
         val sentences = lines
                 .flatMap { it.split(Regex("[ ]*\\.[ ]*")) }
                 .filter { it.length > 20 }

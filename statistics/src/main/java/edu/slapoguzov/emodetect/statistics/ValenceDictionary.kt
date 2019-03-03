@@ -3,18 +3,16 @@ package edu.slapoguzov.emodetect.statistics
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.readValue
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
-import edu.slapoguzov.emodetect.core.getPathToResource
+import edu.slapoguzov.emodetect.core.readResource
 import edu.slapoguzov.emodetect.statistics.entity.ValencedWord
-import java.io.File
 
-class ValenceDictionary() {
+class ValenceDictionary {
     private val mapper = ObjectMapper().registerKotlinModule()
 
     val dictionary: Map<String, ValencedWord>
 
     init {
-        val path = this.javaClass.getPathToResource("valency/valenceDictionary.json")
-        val file = File(path)
+        val file = this.javaClass.readResource("valency/valenceDictionary.json")
         val valencedWords = mapper.readValue<List<ValencedWord>>(file)
         dictionary = valencedWords.associateBy { it.token }
     }

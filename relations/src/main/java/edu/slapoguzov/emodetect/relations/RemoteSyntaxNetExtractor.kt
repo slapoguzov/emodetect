@@ -9,15 +9,15 @@ import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.Socket
 import java.net.SocketException
-import kotlin.math.log
 
 
 class RemoteSyntaxNetExtractor(
         private val host: String = "195.201.42.18",
-        private val port: Int = 8111
+        private val port: Int = 8111,
+        private val pathToMystem: String = "libs/mystem-3.1.exe"
 ) : RelationsExtractor {
 
-    private val myStem = MyStemFactory().getMyStem()
+    private val myStem = MyStemFactory(pathToMystem).getMyStem()
     private val additionalMorphoDictionary = AdditionalMorphoDictionary()
     private val morphoProcessor = MorphoProcessor(myStem, additionalMorphoDictionary)
     private val connlReader = ConnlReader()

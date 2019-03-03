@@ -7,7 +7,7 @@
     <groupId>edu.slapoguzov.emodetect</groupId>
     <artifactId>emodetect</artifactId>
     <packaging>pom</packaging>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1-SNAPSHOT</version>
     <modules>
         <module>occ</module>
         <module>sentence</module>
@@ -24,12 +24,14 @@
         <kotlin.version>1.3.21</kotlin.version>
         <klogging.version>1.5.4</klogging.version>
         <slf4j.version>1.7.25</slf4j.version>
-        <mystem.version>0.1.4</mystem.version>
+        <mystem.version>0.1.5</mystem.version>
         <jackson.version>2.9.8</jackson.version>
         <opencsv.version>4.2</opencsv.version>
         <micronaut.version>1.0.4</micronaut.version>
         <maven-assembly-plugin.version>2.6</maven-assembly-plugin.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <maven-shade-plugin.version>3.1.0</maven-shade-plugin.version>
+        <exec-maven-plugin.version>1.6.0</exec-maven-plugin.version>
     </properties>
 
     <dependencyManagement>
@@ -177,6 +179,16 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
                     <version>${maven-compiler-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>${maven-shade-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>exec-maven-plugin</artifactId>
+                    <version>${exec-maven-plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>

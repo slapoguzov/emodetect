@@ -12,17 +12,11 @@ import mu.KLogging
 import javax.inject.Singleton
 
 @Singleton
-class EmotionService {
-
-    private val relationExtractor = RemoteSyntaxNetExtractor("localhost")
-
-    private val relationProcessor = RelationProcessor()
-    private val statisticsComponent = StatisticsComponent()
-    private val collectingProcessor = CollectingProcessor(relationExtractor, relationProcessor, statisticsComponent)
-
-    private val cognitiveVariablesDetector = DefaultCognitiveVariablesDetector()
-    private val emotionsDetector = EmotionsDetector()
-
+class EmotionService(
+        private val collectingProcessor: CollectingProcessor,
+        private val cognitiveVariablesDetector: DefaultCognitiveVariablesDetector,
+        private val emotionsDetector: EmotionsDetector
+) {
 
     fun detectEmotions(text: String): Set<EmotionType> {
         logger.info { "source text: $text" }

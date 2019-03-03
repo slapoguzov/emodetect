@@ -5,7 +5,7 @@
     <parent>
         <artifactId>emodetect</artifactId>
         <groupId>edu.slapoguzov.emodetect</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>0.0.1-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -19,13 +19,6 @@
         <dependency>
             <groupId>edu.slapoguzov.emodetect</groupId>
             <artifactId>core</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.7.0</version>
-            <scope>system</scope>
-            <systemPath>${project.basedir}/../libs/stanford-corenlp-3.7.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.module</groupId>

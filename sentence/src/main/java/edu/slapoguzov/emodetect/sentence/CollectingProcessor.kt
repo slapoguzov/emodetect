@@ -1,10 +1,12 @@
 package edu.slapoguzov.emodetect.sentence
 
-import edu.slapoguzov.emodetect.morpho.model.Grammem
 import edu.slapoguzov.emodetect.relations.RelationsExtractor
 import edu.slapoguzov.emodetect.relations.model.connl.Token
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters
-import edu.slapoguzov.emodetect.sentence.model.*
+import edu.slapoguzov.emodetect.sentence.model.Characteristic
+import edu.slapoguzov.emodetect.sentence.model.Clause
+import edu.slapoguzov.emodetect.sentence.model.Sentence
+import edu.slapoguzov.emodetect.sentence.model.Word
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
 import mu.KLogging
 

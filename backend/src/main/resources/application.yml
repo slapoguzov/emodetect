@@ -1,0 +1,5 @@
+syntaxnet:
+  host: ${SYNTAXNET_HOST:localhost}
+  port: ${SYNTAXNET_PORT:8111}
+mystem:
+  path: ${MYSTEM_PATH:libs/mystem-3.1.exe}
