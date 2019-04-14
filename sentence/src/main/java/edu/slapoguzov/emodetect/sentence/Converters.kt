@@ -59,6 +59,7 @@ fun Feats.toCharacteristic(): Characteristic? {
         Feats.UNEXPECTED -> Characteristic.IS_SUDDENLY
         Feats.ANIMATE -> Characteristic.ANIMATE
         Feats.INANIMATE -> Characteristic.INANIMATE
+        Feats.FIRST_PERSON -> Characteristic.FIRST_PERSON
         else -> null
     }
 }

@@ -9900,10 +9900,10 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "младший",
-  "valence" : 0.5,
+  "valence" : 0.25,
   "numberPositiveSenses" : 1,
   "numberNegativeSenses" : 0,
-  "numberNeutralSenses" : 1
+  "numberNeutralSenses" : 3
 }, {
   "token" : "млрд",
   "valence" : 0.0,
@@ -19098,6 +19098,12 @@
   "numberNeutralSenses" : 3
 }, {
   "token" : "сломаться",
+  "valence" : -0.4,
+  "numberPositiveSenses" : 0,
+  "numberNegativeSenses" : 2,
+  "numberNeutralSenses" : 3
+}, {
+  "token" : "сломать",
   "valence" : -0.4,
   "numberPositiveSenses" : 0,
   "numberNegativeSenses" : 2,
@@ -67104,9 +67110,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "ограбить",
-  "valence" : 0.0,
+  "valence" : -0.75,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 3,
   "numberNeutralSenses" : 1
 }, {
   "token" : "ограбление",
@@ -80334,9 +80340,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "призрак",
-  "valence" : 0.0,
+  "valence" : -0.3333333333,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 1
 }, {
   "token" : "прийти в нормальное состояние",
@@ -91362,10 +91368,10 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "соврать",
-  "valence" : 0.0,
+  "valence" : -1.0,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 0,
-  "numberNeutralSenses" : 1
+  "numberNegativeSenses" : 1,
+  "numberNeutralSenses" : 0
 }, {
   "token" : "совращать",
   "valence" : 0.0,
@@ -98250,9 +98256,9 @@
   "numberNeutralSenses" : 1
 }, {
   "token" : "украсть",
-  "valence" : -0.3333333333333333,
+  "valence" : -0.5,
   "numberPositiveSenses" : 0,
-  "numberNegativeSenses" : 1,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 2
 }, {
   "token" : "украшательство",

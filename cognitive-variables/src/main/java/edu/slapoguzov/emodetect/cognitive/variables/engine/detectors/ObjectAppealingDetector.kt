@@ -12,8 +12,8 @@ class ObjectAppealingDetector : VariableDetector<ObjectAppealing> {
         val objects = sentence.allWords.filter { it.characteristics.contains(Characteristic.IS_OBJECT) }
         if (objects.isEmpty()) return NEUTRAL
         val values = objects.map {
-            if (it.popularity < 0.3 && it.valence > 0.0) return@map ATTRACTIVE
-            if (it.popularity > 0.5 && it.valence < 0.0) return@map NOT_ATTRACTIVE
+            if (it.popularity < 0.001 && it.valence > 0.0) return@map ATTRACTIVE
+            if (it.popularity > 0.001 && it.valence < 0.0) return@map NOT_ATTRACTIVE
             NEUTRAL
         }
         val numberAttractive = values.count { it == ATTRACTIVE }

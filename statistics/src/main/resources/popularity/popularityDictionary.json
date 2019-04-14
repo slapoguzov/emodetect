@@ -4176,9 +4176,9 @@
       } ],
       "useWithObjects" : [ ]
     },
-    "встречает" : {
-      "lemma" : "встречает",
-      "numberOfUse" : 6,
+    "встречать" : {
+      "lemma" : "встречать",
+      "numberOfUse" : 8,
       "useWithAgents" : [ {
         "lemma" : "обидно",
         "numberOfUse" : 1
@@ -4189,6 +4189,9 @@
       "useWithObjects" : [ {
         "lemma" : "новгород",
         "numberOfUse" : 1
+      },{
+        "lemma" : "проститутку",
+        "numberOfUse" : 2
       } ]
     },
     "подъезде" : {
@@ -6570,6 +6573,15 @@
       "useWithAgents" : [ {
         "lemma" : "дурь",
         "numberOfUse" : 1
+      } ],
+      "useWithObjects" : [ ]
+    },
+    "выпивать" : {
+      "lemma" : "выпивать",
+      "numberOfUse" : 2,
+      "useWithAgents" : [ {
+        "lemma" : "жир",
+        "numberOfUse" : 2
       } ],
       "useWithObjects" : [ ]
     },
@@ -9055,5 +9067,5 @@
       } ]
     }
   },
-  "totalOfUse" : 3216
+  "totalOfUse" : 3220
 }

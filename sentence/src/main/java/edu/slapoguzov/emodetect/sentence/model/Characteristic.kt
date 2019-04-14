@@ -13,6 +13,8 @@ enum class Characteristic {
     IS_SUBJECT,
     IS_OBJECT,
 
+    FIRST_PERSON,
+
     ANIMATE,
     INANIMATE,
 

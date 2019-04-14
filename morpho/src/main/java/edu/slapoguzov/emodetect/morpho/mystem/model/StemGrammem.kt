@@ -23,6 +23,8 @@ enum class StemGrammem(val text: String) {
     ANIMATE("anim"),
     INANIMATE("inan"),
 
+    FIRST_PERSON("1p"),
+
     GEO("geo"), //географическое название
     PERSON("persn"), //имя собственное
 

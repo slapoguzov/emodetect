@@ -8,6 +8,8 @@ enum class Grammem {
     ANIMATE,
     INANIMATE,
 
+    FIRST_PERSON,
+
     MODAL,
 
     UNEXPECTED

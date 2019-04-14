@@ -40,6 +40,9 @@ object ConnlEnricher {
             PRESENT_TENSE -> Feats.PRESENT_TENSE
             MODAL -> Feats.MODAL
             UNEXPECTED -> Feats.UNEXPECTED
+            ANIMATE -> Feats.ANIMATE
+            INANIMATE -> Feats.INANIMATE
+            FIRST_PERSON -> Feats.FIRST_PERSON
             else -> null
         }
     }

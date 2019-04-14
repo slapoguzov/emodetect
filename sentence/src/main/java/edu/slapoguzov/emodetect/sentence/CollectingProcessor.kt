@@ -1,6 +1,8 @@
 package edu.slapoguzov.emodetect.sentence
 
 import edu.slapoguzov.emodetect.relations.RelationsExtractor
+import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach
+import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach.*
 import edu.slapoguzov.emodetect.relations.model.connl.Token
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters
 import edu.slapoguzov.emodetect.sentence.model.Characteristic
@@ -31,16 +33,23 @@ class CollectingProcessor(
             allWords.merge(target)
         }
 
-        val clauseValence = statisticsComponent.getValence(allWords.mapNotNull { it.lemma })
+        val lemmas = allWords.mapNotNull { it.lemma }
+        val clauseValence = statisticsComponent.getValence(lemmas)
         val clause = Clause(allWords, emptyList(), clauseValence)
 
-        val sentenceValence = statisticsComponent.getValence(allWords.mapNotNull { it.lemma })
+        val sentenceValence = statisticsComponent.getValence(lemmas)
         return Sentence(listOf(clause), sentenceValence)
     }
 
     private fun buildWord(token: Token, srcCharacteristics: List<Characteristic>): Word {
         val popularity = token.lemma.let { statisticsComponent.getPopularity(it) }
-        val valence = token.lemma.let { statisticsComponent.getValence(it) }
+        val depsValence = token.getDeepDependencies()
+                .filter { it.dependent.partOfSpeach == ADJECTIVE }
+                .map { statisticsComponent.getValence(it.dependent.lemma) }
+                .average()
+        val tokenValence = token.lemma.let { statisticsComponent.getValence(it) }
+        val avgValence = if(depsValence.isNaN()) listOf(tokenValence).average() else listOf(depsValence, tokenValence).average()
+        val valence = if(avgValence.isNaN()) 0.0 else avgValence
         return Word(
                 form = token.form,
                 lemma = token.lemma,

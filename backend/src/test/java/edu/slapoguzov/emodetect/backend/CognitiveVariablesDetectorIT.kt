@@ -1,27 +1,20 @@
 package edu.slapoguzov.emodetect.backend
 
-import edu.slapoguzov.emodetect.backend.service.EmotionService
 import edu.slapoguzov.emodetect.cognitive.variables.engine.DefaultCognitiveVariablesDetector
-import edu.slapoguzov.emodetect.occ.model.EmotionsDetector
 import edu.slapoguzov.emodetect.occ.model.variables.*
 import edu.slapoguzov.emodetect.relations.RemoteSyntaxNetExtractor
 import edu.slapoguzov.emodetect.sentence.CollectingProcessor
 import edu.slapoguzov.emodetect.sentence.RelationProcessor
 import edu.slapoguzov.emodetect.statistics.StatisticsComponent
+import jdk.nashorn.internal.ir.annotations.Ignore
 import mu.KLogging
-import org.junit.Assert.fail
-import org.junit.Ignore
-import org.junit.Test
-import org.junit.runner.RunWith
-import org.junit.runners.Parameterized
+import org.junit.jupiter.api.fail
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.MethodSource
 
 @Ignore
-@RunWith(Parameterized::class)
-class CognitiveVariablesDetectorIT(
-        val text: String,
-        val expectedVariables: Set<CognitiveVariable>
-) {
-    private val relationExtractor = RemoteSyntaxNetExtractor()
+class CognitiveVariablesDetectorIT {
+    private val relationExtractor = RemoteSyntaxNetExtractor(syntaxNetHost, syntaxNetPort, mystemPath)
 
     private val relationProcessor = RelationProcessor()
     private val statisticsComponent = StatisticsComponent()
@@ -31,7 +24,6 @@ class CognitiveVariablesDetectorIT(
 
     companion object : KLogging() {
         @JvmStatic
-        @Parameterized.Parameters(name = "{0}")
         fun data(): Collection<Array<out Any?>> {
             return listOf(
                     arrayOf("Она любит страшные фильмы", setOf(SelfPresumption.DESIRABLE, SelfReaction.PLEASED)),
@@ -50,10 +42,14 @@ class CognitiveVariablesDetectorIT(
 
             )
         }
+        const val syntaxNetHost = "localhost"
+        const val syntaxNetPort = 8111
+        const val mystemPath = "C:\\MyStem\\mystem-3.1.exe"
     }
 
-    @Test
-    fun test() {
+    @ParameterizedTest
+    @MethodSource("data")
+    fun test(text: String, expectedVariables: Set<CognitiveVariable>) {
         val expectedClasses = expectedVariables.map { it.javaClass }
         val sentence = collectingProcessor.process(text)
         logger.info { "sentence: $sentence" }

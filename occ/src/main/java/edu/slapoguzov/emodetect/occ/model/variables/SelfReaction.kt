@@ -1,7 +1,7 @@
 package edu.slapoguzov.emodetect.occ.model.variables
 
 /**
- * These variable is assessed with respect to the events.
+ * This variable is assessed with respect to the events.
  *
  * For example, `I like romantic movies`  - PLEASED.
  *              `kill innocent civilians` - DISPLEASED

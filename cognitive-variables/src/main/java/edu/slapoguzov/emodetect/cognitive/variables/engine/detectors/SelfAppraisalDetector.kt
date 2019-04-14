@@ -10,8 +10,8 @@ class SelfAppraisalDetector : VariableDetector<SelfAppraisal> {
             it.characteristics.contains(Characteristic.IS_ACTION) &&
                     !it.characteristics.contains(Characteristic.IS_MODAL)
         } ?: return SelfAppraisal.NEUTRAL
-        if (action.valence >= 0.5) return SelfAppraisal.PRAISEWORTHY
-        if (action.valence <= -0.5) return SelfAppraisal.BLAMEWORTHY
+        if (action.valence >= 0.3) return SelfAppraisal.PRAISEWORTHY
+        if (action.valence <= -0.3) return SelfAppraisal.BLAMEWORTHY
         return SelfAppraisal.NEUTRAL
     }
 }

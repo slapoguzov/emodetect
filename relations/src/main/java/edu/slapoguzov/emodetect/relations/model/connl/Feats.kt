@@ -5,6 +5,7 @@ enum class Feats(val token: String) {
     PAST_TENSE("Tense=Past"),
     ANIMATE("Animacy=Anim"),
     INANIMATE("Animacy=Inan"),
+    FIRST_PERSON("person=1"),
     DEGREE("Degree="),
     MODAL("Mood="),
     UNEXPECTED("Unexpected=true")
