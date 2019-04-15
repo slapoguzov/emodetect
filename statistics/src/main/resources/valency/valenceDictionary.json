@@ -41687,6 +41687,12 @@
   "numberNegativeSenses" : 0,
   "numberNeutralSenses" : 1
 }, {
+  "token" : "задавливать",
+  "valence" : -0.666666666666,
+  "numberPositiveSenses" : 0,
+  "numberNegativeSenses" : 2,
+  "numberNeutralSenses" : 1
+}, {
   "token" : "задаваться",
   "valence" : -0.3333333333333333,
   "numberPositiveSenses" : 0,
@@ -84225,6 +84231,12 @@
   "valence" : 0.0,
   "numberPositiveSenses" : 0,
   "numberNegativeSenses" : 0,
+  "numberNeutralSenses" : 1
+}, {
+  "token" : "разводиться",
+  "valence" : -0.666666,
+  "numberPositiveSenses" : 0,
+  "numberNegativeSenses" : 2,
   "numberNeutralSenses" : 1
 }, {
   "token" : "разволновать",

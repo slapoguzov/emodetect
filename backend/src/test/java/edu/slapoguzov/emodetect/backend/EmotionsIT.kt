@@ -46,7 +46,7 @@ class EmotionsIT {
 
     fun EmotionType.toTest(): String {
         return when(this){
-            FEAR, FEARS_CONFIRMED -> "FEAR"
+            SHOCK, FEAR, FEARS_CONFIRMED -> "FEAR"
             JOY, HAPPY_FOR, SATISFACTION, ADMIRATION, PRIDE -> "JOY"
             ANGER, REPROACH -> "ANGER"
             DISTRESS, SORRY_FOR, DISAPPOINTMENT, SHAME -> "SADNESS"
