@@ -1,9 +1,13 @@
 package edu.slapoguzov.emodetect.relations
 
+import edu.slapoguzov.emodetect.core.conll.Conll
+import edu.slapoguzov.emodetect.core.conll.DefaultConllParser
+import edu.slapoguzov.emodetect.core.conll.Feats
 import edu.slapoguzov.emodetect.morpho.AdditionalMorphoDictionary
 import edu.slapoguzov.emodetect.morpho.MorphoProcessor
+import edu.slapoguzov.emodetect.morpho.model.Grammem
+import edu.slapoguzov.emodetect.morpho.model.MorphoUnit
 import edu.slapoguzov.emodetect.morpho.mystem.MyStemFactory
-import edu.slapoguzov.emodetect.relations.model.connl.ConnlSentence
 import mu.KLogging
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -20,10 +24,10 @@ class RemoteSyntaxNetExtractor(
     private val myStem = MyStemFactory(pathToMystem).getMyStem()
     private val additionalMorphoDictionary = AdditionalMorphoDictionary()
     private val morphoProcessor = MorphoProcessor(myStem, additionalMorphoDictionary)
-    private val connlReader = ConnlReader()
+    private val conllParser = DefaultConllParser()
     private var socket = Socket(host, port)
 
-    override fun extract(text: String): ConnlSentence {
+    override fun extract(text: String): Conll {
         val morphoUnits = morphoProcessor.process(text)
         var finalText = text.replace(Regex("(.)(\\p{Punct}|[\\(\\)])(.)")) { r ->
             r.groupValues[1].trim() + " " + r.groupValues[2] + " " + r.groupValues[3].trim()
@@ -42,11 +46,10 @@ class RemoteSyntaxNetExtractor(
 
             val input = BufferedReader(InputStreamReader(socket.getInputStream()))
             val connlText = input.readText()
-            val connlRows = connlReader.readSourceLines(connlText)
-            ConnlEnricher.enrich(connlRows, morphoUnits)
-            logger.info { "\n" + connlRows.joinToString("\n") }
-            val connlSentence = connlReader.read(connlRows)
-            return connlSentence
+            val conll = conllParser.parse(connlText)
+            enrich(conll, morphoUnits)
+            logger.info { "$conll" }
+            return conll
         } catch (e: SocketException) {
             socket.close()
             socket = Socket(host, port)
@@ -54,6 +57,39 @@ class RemoteSyntaxNetExtractor(
         }
     }
 
+    fun enrich(conll: Conll, morphoUnits: Map<Int, MorphoUnit> = emptyMap()) {
+        conll.rows.forEach { row ->
+            val morphoUnit = morphoUnits[row.id]
+            row.lemma = row.lemma ?: morphoUnit?.lex
+            val currentFeats = row.feats ?: mutableSetOf()
+            val newFeats = morphoUnit?.grammems
+                    ?.mapNotNull { it.toFeat() }
+                    ?.filter { !currentFeats.contains(it) }
+                    .orEmpty()
+
+            //override modal
+            val isMorphoUnitContainModal = morphoUnit?.grammems?.any { it == Grammem.MODAL } ?: false
+            val isCurrentContainModal = row.feats?.contains(Feats.MODAL) ?: false
+            if (isCurrentContainModal && !isMorphoUnitContainModal) {
+                row.feats?.remove(Feats.MODAL)
+            }
+
+            currentFeats.addAll(newFeats)
+        }
+    }
+
+    private fun Grammem.toFeat(): Feats? {
+        return when (this) {
+            Grammem.PAST_TENSE -> Feats.PAST_TENSE
+            Grammem.PRESENT_TENSE -> Feats.PRESENT_TENSE
+            Grammem.MODAL -> Feats.MODAL
+            Grammem.UNEXPECTED -> Feats.UNEXPECTED
+            Grammem.ANIMATE -> Feats.ANIMATE
+            Grammem.INANIMATE -> Feats.INANIMATE
+            Grammem.FIRST_PERSON -> Feats.FIRST_PERSON
+            else -> null
+        }
+    }
 
     companion object : KLogging() {
         private val END_COMMAND = "\n\n".toByteArray(Charsets.UTF_8)

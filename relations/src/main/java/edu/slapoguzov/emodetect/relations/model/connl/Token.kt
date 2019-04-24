@@ -1,12 +1,14 @@
 package edu.slapoguzov.emodetect.relations.model.connl
 
+import edu.slapoguzov.emodetect.core.conll.Feat
+import edu.slapoguzov.emodetect.core.conll.extension.Dependency
 import edu.slapoguzov.emodetect.relations.model.connl.DependencyType.*
 
 data class Token(
         val form: String,
         val lemma: String,
         val partOfSpeach: PartOfSpeach,
-        val feats: List<Feats> = emptyList(),
+        val feats: List<Feat> = emptyList(),
         val position: Int,
         val dependencies: MutableList<Dependency>,
         val misc: String? = null

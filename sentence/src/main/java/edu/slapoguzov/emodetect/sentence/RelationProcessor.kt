@@ -1,9 +1,8 @@
 package edu.slapoguzov.emodetect.sentence
 
+import edu.slapoguzov.emodetect.core.conll.Feats
 import edu.slapoguzov.emodetect.relations.model.connl.DependencyType.*
 import edu.slapoguzov.emodetect.relations.model.connl.DependencyType.OTHER
-import edu.slapoguzov.emodetect.relations.model.connl.Feats
-import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach
 import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach.*
 import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach.AUXILIARY
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters

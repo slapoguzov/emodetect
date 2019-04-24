@@ -1,32 +1,32 @@
 package edu.slapoguzov.emodetect.sentence
 
+import edu.slapoguzov.emodetect.core.conll.Feats
+import edu.slapoguzov.emodetect.core.conll.UniversalPos
 import edu.slapoguzov.emodetect.morpho.model.Grammem
-import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach as ConnlPartOfSpeach
 import edu.slapoguzov.emodetect.sentence.model.PartOfSpeech
 import edu.slapoguzov.emodetect.morpho.mystem.model.StemGrammem
-import edu.slapoguzov.emodetect.relations.model.connl.Feats
 import edu.slapoguzov.emodetect.sentence.model.Characteristic
 
-fun ConnlPartOfSpeach.toPartOfSpeach(): PartOfSpeech {
+fun UniversalPos.toPartOfSpeach(): PartOfSpeech {
     return when (this) {
-        ConnlPartOfSpeach.ADJECTIVE -> PartOfSpeech.ADJECTIVE
-        ConnlPartOfSpeach.ADPOSITION -> PartOfSpeech.OTHER
-        ConnlPartOfSpeach.ADVERB -> PartOfSpeech.ADVERB
-        ConnlPartOfSpeach.AUXILIARY -> PartOfSpeech.OTHER
-        ConnlPartOfSpeach.CONJUNCTION -> PartOfSpeech.CONJUNCTION
-        ConnlPartOfSpeach.COORDINATING_CONJUNCTION -> PartOfSpeech.CONJUNCTION
-        ConnlPartOfSpeach.DETERMINER -> PartOfSpeech.PRONOUN
-        ConnlPartOfSpeach.INTERJECTION -> PartOfSpeech.INTERJECTION
-        ConnlPartOfSpeach.NOUN -> PartOfSpeech.NOUN
-        ConnlPartOfSpeach.NUMERAL -> PartOfSpeech.NUMERAL
-        ConnlPartOfSpeach.PARTICLE -> PartOfSpeech.PARTICLE
-        ConnlPartOfSpeach.PRONOUN -> PartOfSpeech.PRONOUN
-        ConnlPartOfSpeach.PROPER_NOUN -> PartOfSpeech.PRONOUN
-        ConnlPartOfSpeach.PUNCTUATION -> PartOfSpeech.PUNCTUATION
-        ConnlPartOfSpeach.SUBORDINATING_CONJUNCTION -> PartOfSpeech.CONJUNCTION
-        ConnlPartOfSpeach.SYMBOL -> PartOfSpeech.OTHER
-        ConnlPartOfSpeach.VERB -> PartOfSpeech.VERB
-        ConnlPartOfSpeach.OTHER -> PartOfSpeech.OTHER
+        UniversalPos.ADJECTIVE -> PartOfSpeech.ADJECTIVE
+        UniversalPos.ADPOSITION -> PartOfSpeech.OTHER
+        UniversalPos.ADVERB -> PartOfSpeech.ADVERB
+        UniversalPos.AUXILIARY -> PartOfSpeech.OTHER
+        UniversalPos.CONJUNCTION -> PartOfSpeech.CONJUNCTION
+        UniversalPos.COORDINATING_CONJUNCTION -> PartOfSpeech.CONJUNCTION
+        UniversalPos.DETERMINER -> PartOfSpeech.PRONOUN
+        UniversalPos.INTERJECTION -> PartOfSpeech.INTERJECTION
+        UniversalPos.NOUN -> PartOfSpeech.NOUN
+        UniversalPos.NUMERAL -> PartOfSpeech.NUMERAL
+        UniversalPos.PARTICLE -> PartOfSpeech.PARTICLE
+        UniversalPos.PRONOUN -> PartOfSpeech.PRONOUN
+        UniversalPos.PROPER_NOUN -> PartOfSpeech.PRONOUN
+        UniversalPos.PUNCTUATION -> PartOfSpeech.PUNCTUATION
+        UniversalPos.SUBORDINATING_CONJUNCTION -> PartOfSpeech.CONJUNCTION
+        UniversalPos.SYMBOL -> PartOfSpeech.OTHER
+        UniversalPos.VERB -> PartOfSpeech.VERB
+        UniversalPos.OTHER -> PartOfSpeech.OTHER
         else -> PartOfSpeech.OTHER
     }
 }

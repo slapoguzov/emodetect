@@ -1,5 +1,6 @@
 package edu.slapoguzov.emodetect.relations
 
+import edu.slapoguzov.emodetect.core.conll.extension.ConnlSentence
 import edu.slapoguzov.emodetect.relations.model.connl.*
 
 class ConnlReader {
@@ -45,7 +46,7 @@ class ConnlReader {
             val deps = dependants.map {
                 val depType = rows[it.position - 1].depType ?: DependencyType.OTHER.text
                 val dependencyType = DependencyType.of(depType)
-                Dependency(it, dependencyType)
+                edu.slapoguzov.emodetect.core.conll.extension.Dependency(it, dependencyType)
             }
             tkn.addDependencies(deps)
         }

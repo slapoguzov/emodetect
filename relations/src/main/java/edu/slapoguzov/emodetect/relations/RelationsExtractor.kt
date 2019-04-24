@@ -1,7 +1,7 @@
 package edu.slapoguzov.emodetect.relations
 
-import edu.slapoguzov.emodetect.relations.model.connl.ConnlSentence
+import edu.slapoguzov.emodetect.core.conll.Conll
 
 interface RelationsExtractor {
-    fun extract(text: String): ConnlSentence
+    fun extract(text: String): Conll
 }

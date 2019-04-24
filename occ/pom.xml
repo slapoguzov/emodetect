@@ -35,6 +35,10 @@
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>edu.slapoguzov.emodetect</groupId>
+            <artifactId>core</artifactId>
+        </dependency>
     </dependencies>
 
     <build>

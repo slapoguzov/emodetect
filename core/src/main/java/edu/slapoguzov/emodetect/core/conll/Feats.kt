@@ -1,6 +1,6 @@
-package edu.slapoguzov.emodetect.relations.model.connl
+package edu.slapoguzov.emodetect.core.conll
 
-enum class Feats(val token: String) {
+enum class Feats(override val token: String) : Feat {
     PRESENT_TENSE("Tense=Pres"),
     PAST_TENSE("Tense=Past"),
     ANIMATE("Animacy=Anim"),

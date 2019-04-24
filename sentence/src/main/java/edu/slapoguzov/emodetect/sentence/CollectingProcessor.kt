@@ -1,9 +1,9 @@
 package edu.slapoguzov.emodetect.sentence
 
+import edu.slapoguzov.emodetect.core.conll.extension.ConnlSentence
 import edu.slapoguzov.emodetect.relations.RelationsExtractor
-import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach
 import edu.slapoguzov.emodetect.relations.model.connl.PartOfSpeach.*
-import edu.slapoguzov.emodetect.relations.model.connl.Token
+import edu.slapoguzov.emodetect.core.conll.extension.Token
 import edu.slapoguzov.emodetect.sentence.entity.RelationProcessorParameters
 import edu.slapoguzov.emodetect.sentence.model.Characteristic
 import edu.slapoguzov.emodetect.sentence.model.Clause
@@ -19,7 +19,8 @@ class CollectingProcessor(
 ) {
 
     fun process(text: String): Sentence {
-        val connlSentence = relationExtractor.extract(text)
+        val relations = relationExtractor.extract(text)
+        val connlSentence = ConnlSentence.of(relations)
         val allWords = mutableListOf<Word>() // TODO: не факт, что хорошее решение
         connlSentence.allRelations.forEach {
             val relationChars = relationProcessor.process(RelationProcessorParameters(it))
