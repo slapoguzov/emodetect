@@ -33,4 +33,14 @@ internal class CollapseProcessor {
         result.add(rule.second)
         return _process(result)
     }
+    
+        private tailrec fun _process2(emotions: MutableSet<EmotionType>): MutableSet<EmotionType> {
+        val result = emotions.toMutableSet()
+        val rule = rules.find { result.containsAll(it.first) }
+                ?: return result
+        logger.info { "apply rule: ${rule.first} to ${rule.second}" }
+        result.removeAll(rule.first)
+        result.add(rule.second)
+        return _process(result)
+    }
 }
