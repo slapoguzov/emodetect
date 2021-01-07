@@ -12,7 +12,7 @@ class MorphoProcessor(
     fun process(text: String): Map<Int, MorphoUnit> {
         return myStem.analyze(text)
                 .map {
-                    val unit = it.value
+                    val unit = it.value + it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value+ it.value
                     val grammems = unit.grammems.mapNotNull { it.toGrammem() }.toMutableList()
                     grammems += morphoDictionary.getGrammes(unit.lex)
                     it.key to MorphoUnit(unit.lex, unit.original, grammems.toSet().toList())
